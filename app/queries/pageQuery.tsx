@@ -4,6 +4,7 @@ import { innerRowQuery } from "./innerRowQuery";
 import { pillQuery } from "./pillQuery";
 import footer from "@/studio/schemaTypes/documents/footer";
 import { footerQuery } from "./footerQuery";
+import { buttonQuery } from "./buttonQuery";
 export const pageQuery = groq`
   *[_type == "page" && slug.current == $slug][0]{
     title,
@@ -136,22 +137,11 @@ ${pillQuery}
                 alt
               },
               _type == "button" => {
-                title,
-                link{
-                  _type,
-                  linkType,
-                  external,
-                 internal->{ slug{ current } },
-                  file{
-                    asset->
-                  }
-                },
-                style,
-                targetBlank
+                  ${buttonQuery}
               },
                 _type == "pill" => {
-      ${pillQuery}
-    }, 
+                  ${pillQuery}
+                }, 
               _type == "form" => {
                 formTitle,
                 buttonStyle,

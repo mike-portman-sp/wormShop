@@ -11,6 +11,7 @@ type CardBGProps = {
     pills?: string[];
     image?: any; // The image field data
     button?: {
+       targetBlank?: boolean;
       link?: any;
     };
   };
@@ -20,12 +21,15 @@ export default function CardBG({ card }: CardBGProps) {
   if (!card) return null;
 
   return (
-   <section className="relative cardBG max-h-[50vh] h-[50vh]">
+    <section className="relative cardBG max-h-[50vh] h-[50vh]">
       <div className="mx-auto h-full">
         <div className="mx-auto grid h-full">
           <a
             key={card._key}
-            href={getLinkUrl(card.button?.link)}
+            href={card.button?.link ? getLinkUrl(card.button.link) : "#"}
+target={card.button?.link?.openInNewTab ? "_blank" : undefined}
+rel={card.button?.link?.openInNewTab ? "noopener noreferrer" : undefined}
+            
             className="group relative rounded-3xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover-lift h-full"
           >
             {/* Thumbnail Background */}

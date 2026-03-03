@@ -35,20 +35,12 @@ export default defineType({
       name: "title",
       type: "string",
       title: "Title",
-      validation: (rule) => rule.required(),
       group: "basic",
     }),
     defineField({
       name: "link",
       type: "link",
       group: "basic",
-    }),
-    defineField({
-      name: "targetBlank",
-      title: "Open in New Tab",
-      type: "boolean",
-      group: "basic",
-      initialValue: false,
     }),
     defineField({
       name: "style",

@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import { buttonQuery } from "./buttonQuery";
 
 export const innerRowQuery = `
   title,
@@ -18,20 +19,7 @@ export const innerRowQuery = `
         alt,
       },
       button{
-        _key,
-        _type,
-        title,
-        link{
-          _type,
-          linkType,
-          external,
-          internal->{ slug{ current } },
-          file{
-            asset->
-          }
-        },
-        style,
-        targetBlank
+      ${buttonQuery}
       }
     },
     
@@ -58,6 +46,7 @@ export const innerRowQuery = `
               _type == "link" => {
                 linkType,
                 external,
+                  openInNewTab,   // 👈 ADD THIS
                 internal->{ slug{ current } },
                 file{
                   asset->{
@@ -75,18 +64,8 @@ export const innerRowQuery = `
           alt
         },
         _type == "button" => {
-          title,
-          link{
-            _type,
-            linkType,
-            external,
-            internal->{ slug{ current } },
-            file{
-              asset->
-            }
-          },
-          style,
-          targetBlank
+    ${buttonQuery}
+
         },
         _type == "form" => {
           formTitle,
