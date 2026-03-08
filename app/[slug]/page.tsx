@@ -44,7 +44,7 @@ export default async function Page({
   const data = await client.fetch(pageQuery, { slug });
 
   if (!data) {
-    return <div>Page not found — slug received: "{slug}"</div>;
+    return <div>Page not found</div>;
   }
 
   return (
