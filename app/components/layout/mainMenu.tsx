@@ -72,7 +72,7 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
               <MenuLinks 
                 items={mainMenu.menuItems}
                 className="flex flex-col gap-4"
-                linkClassName="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
+                linkClassName="text-center text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
                 onLinkClick={() => setIsMobileMenuOpen(false)}
               />
               <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold hover:scale-105 shadow-lg hover:shadow-xl h-9 px-4">
