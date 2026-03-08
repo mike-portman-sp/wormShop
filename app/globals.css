@@ -113,6 +113,7 @@
     /* --sidebar-ring: 12 76% 61%; */
 
     --radius: 1rem;
+    --nav-height: 69px;
 
     --gradient-warm: linear-gradient(
       135deg,
@@ -128,6 +129,8 @@
     /* --spacing-xl: 4rem; */
     /* --spacing-2xl: 6rem; */
   }
+
+  /* scroll-behavior: smooth; — replaced with JS for speed control */
 
   body {
     @apply bg-background text-foreground;

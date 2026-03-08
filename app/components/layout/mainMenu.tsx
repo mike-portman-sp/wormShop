@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import MenuLinks from "../utils/menuLinks";
 
@@ -31,11 +31,27 @@ type MainMenuProps = {
 
 export default function MainMenu({ mainMenu }: MainMenuProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (navRef.current) {
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          `${navRef.current.offsetHeight}px`
+        );
+      }
+    };
+    updateNavHeight();
+    const observer = new ResizeObserver(updateNavHeight);
+    if (navRef.current) observer.observe(navRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   if (!mainMenu?.menuItems) return null;
 
   return (
-    <nav className="fixed sticky relative top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav ref={navRef} className="sticky top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4 max-w-6xl">
         <div className="flex items-center justify-between">
           <a
@@ -52,7 +68,7 @@ export default function MainMenu({ mainMenu }: MainMenuProps) {
               className="flex items-center gap-8"
               linkClassName="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
             />
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold hover:scale-105 shadow-lg hover:shadow-xl h-9 px-4">
+            <button id="#contact" className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold hover:scale-105 shadow-lg hover:shadow-xl h-9 px-4">
               Let's Chat! 💬
             </button>
           </div>

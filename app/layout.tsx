@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SmoothScroll from "./components/utils/smoothScroll";
 
 import { getSiteSettings } from "./queries/getSiteSettings";
 import { generateMetadata as genMeta } from "./queries/generateMetaData";
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className="antialiased"
       >
+        <SmoothScroll />
         {children}
       </body>
     </html>
