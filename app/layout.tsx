@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "./components/utils/smoothScroll";
 
@@ -37,6 +38,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={robotoCondensed.variable}>
       <body className="antialiased">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-RG0PH08QTM" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RG0PH08QTM');
+        `}</Script>
         <SmoothScroll />
         {children}
       </body>
