@@ -8,7 +8,7 @@ const blogsQuery = groq`*[_type == "blogs" && defined(slug.current)]{ "slug": sl
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const settings = await getSiteSettings();
-  const siteUrl = settings?.siteUrl || "https://mikeportman.com";
+  const siteUrl = settings?.siteUrl || process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   const [pages, blogs] = await Promise.all([
     client.fetch(pagesQuery),

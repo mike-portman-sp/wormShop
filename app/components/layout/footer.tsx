@@ -41,7 +41,7 @@ export default function Footer({ footer, mainMenu, siteName }: FooterProps) {
     <footer className="py-12 bg-background border-t border-border">
       <div className="flex flex-col items-center gap-6">
         <a href="/" className="text-3xl font-handwritten font-bold text-primary">
-          {siteName || "Mike Portman ✨"}
+          {siteName || "Mike Portman"}
         </a>
 
         {/* Main Menu Links in Footer */}

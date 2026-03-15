@@ -75,7 +75,7 @@ export default function Form({ form }: FormProps) {
                 }
                 rows={4}
                 className="w-full px-5 py-4 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
-                placeholder="What's on your mind? ✨"
+                placeholder="What's on your mind?"
                 required
               />
 

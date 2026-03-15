@@ -42,7 +42,7 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
       if (navRef.current) {
         document.documentElement.style.setProperty(
           "--nav-height",
-          `${navRef.current.offsetHeight}px`
+          `${navRef.current.offsetHeight}px`,
         );
       }
     };
@@ -55,19 +55,22 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
   if (!mainMenu?.menuItems) return null;
 
   return (
-    <nav ref={navRef} className="sticky top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav
+      ref={navRef}
+      className="sticky top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
+    >
       <div className="container mx-auto px-6 py-4 max-w-6xl">
         <div className="flex items-center justify-between">
           <a
             href="/"
             className="text-2xl font-handwritten font-bold text-primary"
           >
-            {siteName || "Mike Portman ✨"}
+            {siteName || "Mike Portman"}
           </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <MenuLinks 
+            <MenuLinks
               items={mainMenu.menuItems}
               className="flex items-center gap-8"
               linkClassName="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
@@ -87,7 +90,7 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4">
             <div className="flex flex-col gap-4">
-              <MenuLinks 
+              <MenuLinks
                 items={mainMenu.menuItems}
                 className="flex flex-col gap-4"
                 linkClassName="text-center text-muted-foreground hover:text-primary transition-colors duration-300 font-medium py-2"
