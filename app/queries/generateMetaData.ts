@@ -8,6 +8,7 @@ type SEOData = {
       url?: string;
     };
   };
+  noIndex?: boolean;
 };
 
 type GenerateMetadataProps = {
@@ -41,10 +42,12 @@ export function generateMetadata({
     defaultSeo?.metaImage?.asset?.url ||
     "";
   const url = `${siteUrl}${path}`;
+  const noIndex = seo?.noIndex ?? false;
 
   return {
     title: metaTitle,
     description: metaDescription,
+    robots: noIndex ? { index: false, follow: false } : undefined,
     openGraph: {
       title: metaTitle,
       description: metaDescription,

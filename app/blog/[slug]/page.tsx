@@ -29,6 +29,7 @@ const blogPostQuery = groq`
     seo{
       metaTitle,
       metaDescription,
+      noIndex,
       metaImage{
         asset->{
           url

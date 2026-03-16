@@ -14,6 +14,7 @@ export const pageQuery = groq`
     seo{
       metaTitle,
       metaDescription,
+      noIndex,
       metaImage{
         asset->{
           url

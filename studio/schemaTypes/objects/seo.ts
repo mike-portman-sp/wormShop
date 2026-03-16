@@ -24,5 +24,12 @@ export default defineType({
       title: 'Meta Image',
       type: 'image',
     }),
+    defineField({
+      name: 'noIndex',
+      title: 'Hide from search engines',
+      description: 'Enable to add noindex — prevents this page from appearing in Google search results.',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
 })
