@@ -31,5 +31,12 @@ export default defineType({
       type: 'boolean',
       initialValue: false,
     }),
+    defineField({
+      name: 'hideNavigation',
+      title: 'Hide menu and footer',
+      description: 'Removes the navigation and footer from this page — useful for landing pages.',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
 })

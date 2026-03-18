@@ -47,11 +47,13 @@ export default async function Page({
     return <div>Page not found</div>;
   }
 
+  const hideNav = data.seo?.hideNavigation;
+
   return (
     <>
-      <MainMenu mainMenu={data.mainMenu} siteName={data.siteName} />
+      {!hideNav && <MainMenu mainMenu={data.mainMenu} siteName={data.siteName} />}
       <PageBuilder blocks={data.pageBuilder} />
-      <Footer footer={data.footer} mainMenu={data.mainMenu} siteName={data.siteName} />
+      {!hideNav && <Footer footer={data.footer} mainMenu={data.mainMenu} siteName={data.siteName} />}
     </>
   );
 }

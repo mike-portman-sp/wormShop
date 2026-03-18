@@ -15,6 +15,7 @@ export const pageQuery = groq`
       metaTitle,
       metaDescription,
       noIndex,
+      hideNavigation,
       metaImage{
         asset->{
           url
