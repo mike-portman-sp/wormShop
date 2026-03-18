@@ -252,6 +252,26 @@
     background-image: var(--color-gradient-4);
     background-color: transparent;
   }
+  .input {
+    width: 100%;
+    background: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.75rem;
+    padding: 0.625rem 1rem;
+    color: hsl(var(--foreground));
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input:focus {
+    border-color: hsl(var(--primary));
+  }
+
+  .input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
   .hover-lift {
     transition: all 0.3s;
   }
