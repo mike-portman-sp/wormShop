@@ -1,0 +1,7 @@
+@use "sass:meta";
+
+@import "../app/globals.css"; // Import this FIRST so Tailwind sees the theme
+
+@include meta.load-css("sass/base/body");
+@include meta.load-css("sass/components/hero");
+@include meta.load-css("sass/components/advancedText");
