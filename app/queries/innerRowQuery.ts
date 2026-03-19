@@ -13,7 +13,7 @@ export const innerRowQuery = `
       pills,
       cardStyle,
       image{
-        asset->,
+        asset->{ url },
         alt
       },
       button{

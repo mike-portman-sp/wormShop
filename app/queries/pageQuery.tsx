@@ -59,7 +59,7 @@ export const pageQuery = groq`
             pills,
             cardStyle,
             image{
-              asset->,
+              asset->{ url },
               alt
             },
             button{

@@ -35,7 +35,7 @@ export const columnQuery = `
     _type == "imageField" => {
       borderRadius,
       maxHeight,
-      asset->,
+      asset->{ url },
       alt
     },
     _type == "button" => {

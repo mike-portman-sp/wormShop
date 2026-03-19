@@ -47,13 +47,7 @@ const mainMenuQuery = groq`
       _type,
       title,
       link{
-        _type,
-        linkType,
-        external,
-        internal->,
-        file{
-          asset->
-        }
+        ${linkProjection}
       }
     }
   }
