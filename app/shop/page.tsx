@@ -1,13 +1,17 @@
 import { client } from "../../studio/client";
 import { allProductsQuery } from "../queries/productQuery";
 import { pageQuery } from "../queries/pageQuery";
-import { shopSettingsQuery } from "../queries/shopSettingsQuery";
 import MainMenu from "../components/layout/mainMenu";
 import Footer from "../components/layout/footer";
 import ProductCard from "../components/shop/ProductCard";
 import CartDrawer from "../components/shop/CartDrawer";
 import type { Product } from "../types/sanity";
 
+export const metadata = {
+  title: "Shop Compostable Worms | wormShop",
+  description:
+    "Premium live composting worms shipped to your door. Red Wigglers, Nightcrawlers, Worm Castings and more.",
+};
 
 const CATEGORY_LABELS: Record<string, string> = {
   "red-wigglers": "Red Wigglers",
@@ -19,46 +23,14 @@ const CATEGORY_LABELS: Record<string, string> = {
   accessories: "Accessories",
 };
 
-type ShopSettings = {
-  tagline?: string;
-  heroHeading?: string;
-  heroSubheading?: string;
-  trustBadges?: Array<{ icon?: string; title?: string; description?: string }>;
-};
-
-const DEFAULT_SETTINGS: Required<ShopSettings> = {
-  tagline: "Live · Compostable · Shipped Fresh",
-  heroHeading: "Premium Composting Worms",
-  heroSubheading:
-    "All worms are raised organically, packed carefully, and shipped with a live delivery guarantee. Transform your food waste into rich compost today.",
-  trustBadges: [
-    { icon: "🚚", title: "Fast Shipping", description: "3–7 business days" },
-    { icon: "✅", title: "Live Guarantee", description: "Arrive alive or we reship" },
-    { icon: "🌱", title: "Organically Raised", description: "No chemicals, ever" },
-    { icon: "📦", title: "Eco Packaging", description: "100% compostable packaging" },
-  ],
-};
-
 export default async function ShopPage() {
-  const [products, pageData, shopSettings] = await Promise.all([
+  const [products, pageData] = await Promise.all([
     client.fetch<Product[]>(allProductsQuery),
     client.fetch(pageQuery, { slug: "shop" }).catch(() => null),
-    client.fetch<ShopSettings>(shopSettingsQuery).catch(() => null),
   ]);
 
-  const s = shopSettings ?? {};
-  const tagline = s.tagline || DEFAULT_SETTINGS.tagline;
-  const heroHeading = s.heroHeading || DEFAULT_SETTINGS.heroHeading;
-  const heroSubheading = s.heroSubheading || DEFAULT_SETTINGS.heroSubheading;
-  const trustBadges =
-    s.trustBadges && s.trustBadges.length > 0
-      ? s.trustBadges
-      : DEFAULT_SETTINGS.trustBadges;
-
   // Group products by category for display
-  const categories = [
-    ...new Set(products?.map((p) => p.category).filter(Boolean)),
-  ] as string[];
+  const categories = [...new Set(products?.map((p) => p.category).filter(Boolean))] as string[];
 
   return (
     <>
@@ -69,13 +41,15 @@ export default async function ShopPage() {
         {/* Hero */}
         <section className="container mx-auto max-w-6xl px-6 py-16 text-center">
           <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-4">
-            {tagline}
+            Live · Compostable · Shipped Fresh
           </p>
           <h1 className="text-foreground mb-4">
-            <strong>{heroHeading}</strong>
+            Premium <strong>Composting Worms</strong>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-xl">
-            {heroSubheading}
+            All worms are raised organically, packed carefully, and shipped
+            with a live delivery guarantee. Transform your food waste into
+            rich compost today.
           </p>
         </section>
 
@@ -90,6 +64,7 @@ export default async function ShopPage() {
               </p>
             </div>
           ) : categories.length > 1 ? (
+            // Show by category if multiple categories exist
             <div className="flex flex-col gap-16">
               {categories.map((cat) => {
                 const catProducts = products.filter((p) => p.category === cat);
@@ -109,6 +84,7 @@ export default async function ShopPage() {
               })}
             </div>
           ) : (
+            // Flat grid for single category or mixed
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
                 <ProductCard key={product._id} product={product} />
@@ -121,18 +97,16 @@ export default async function ShopPage() {
         <section className="bg-muted border-t border-border py-12">
           <div className="container mx-auto max-w-6xl px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {trustBadges.map((badge) => (
-                <div
-                  key={badge.title}
-                  className="flex flex-col items-center gap-2"
-                >
+              {[
+                { icon: "🚚", title: "Fast Shipping", desc: "3–7 business days" },
+                { icon: "✅", title: "Live Guarantee", desc: "Arrive alive or we reship" },
+                { icon: "🌱", title: "Organically Raised", desc: "No chemicals, ever" },
+                { icon: "📦", title: "Eco Packaging", desc: "100% compostable packaging" },
+              ].map((badge) => (
+                <div key={badge.title} className="flex flex-col items-center gap-2">
                   <span className="text-4xl">{badge.icon}</span>
-                  <h3 className="text-foreground text-base font-bold m-0">
-                    {badge.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm m-0">
-                    {badge.description}
-                  </p>
+                  <h3 className="text-foreground text-base font-bold m-0">{badge.title}</h3>
+                  <p className="text-muted-foreground text-sm m-0">{badge.desc}</p>
                 </div>
               ))}
             </div>
@@ -140,11 +114,7 @@ export default async function ShopPage() {
         </section>
       </main>
 
-      <Footer
-        footer={pageData?.footer}
-        mainMenu={pageData?.mainMenu}
-        siteName={pageData?.siteName}
-      />
+      <Footer footer={pageData?.footer} mainMenu={pageData?.mainMenu} siteName={pageData?.siteName} />
     </>
   );
 }

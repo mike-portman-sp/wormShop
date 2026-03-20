@@ -51,17 +51,6 @@ export default defineType({
       hidden: ({parent}) => parent?.heroStyle === 'sub-page-hero',
     }),
     defineField({
-      name: 'heroImage',
-      title: 'Hero Image',
-      type: 'image',
-      group: 'basic',
-      options: { hotspot: true },
-      fields: [
-        defineField({ name: 'alt', title: 'Alt text', type: 'string' }),
-      ],
-      hidden: ({parent}) => parent?.heroStyle === 'sub-page-hero',
-    }),
-    defineField({
       name: 'blobs',
       type: 'boolean',
       group: 'settings',

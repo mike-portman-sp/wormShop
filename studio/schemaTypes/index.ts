@@ -22,8 +22,7 @@ import pill from  './fields/pill'
 import footer from './documents/footer'
 import product from './documents/product'
 import productList from './types/productList'
-import shopSettings from './documents/shopSettings'
 
 export const schemaTypes = [ page, mainMenu, seo, pill, footer, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder,
     heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link,
-    product, productList, shopSettings ]
+    product, productList ]

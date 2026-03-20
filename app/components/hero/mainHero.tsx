@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { PortableText } from "next-sanity";
 import Button from "../fields/button";
 
@@ -130,22 +129,57 @@ export default function MainHero({ hero }: { hero: any }) {
             </div>
           </div>
 
-          {/* ── Right: hero image ── */}
-          {hero.heroImage?.url && (
-            <div
-              className="hidden lg:flex items-center justify-center animate-fade-up"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <Image
-                src={hero.heroImage.url}
-                alt={hero.heroImage.alt ?? "Hero image"}
-                width={hero.heroImage.dimensions?.width ?? 600}
-                height={hero.heroImage.dimensions?.height ?? 600}
-                className="rounded-3xl border border-border/60 shadow-xl w-full max-w-lg h-auto object-cover"
-                priority
+          {/* ── Right: vintage medallion ── */}
+          <div
+            className="hidden lg:flex items-center justify-center animate-fade-up"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <div className="relative w-80 h-80">
+
+              {/* Outermost ring — dashed */}
+              <div
+                className="absolute inset-0 rounded-full border border-dashed border-accent/20"
               />
+              {/* Ornate double-ring */}
+              <div
+                className="absolute inset-5 rounded-full border-2 border-accent/25"
+              />
+              <div
+                className="absolute inset-7 rounded-full border border-border/80"
+              />
+
+              {/* Centre medallion */}
+              <div
+                className="absolute inset-10 rounded-full flex flex-col items-center justify-center text-center"
+                style={{
+                  background:
+                    "radial-gradient(ellipse, hsl(28 30% 22%) 0%, hsl(28 28% 16%) 100%)",
+                  boxShadow: "0 0 60px hsl(22 65% 42% / 0.20), inset 0 1px 0 hsl(38 38% 87% / 0.08)",
+                  border: "1px solid hsl(28 30% 30%)",
+                }}
+              >
+                <span className="text-6xl leading-none mb-1 select-none">🪱</span>
+                <span
+                  className="text-xs font-bold uppercase tracking-[0.15em] mt-2"
+                  style={{ color: "hsl(38 65% 75%)" }}
+                >
+                  Live Worms
+                </span>
+                <span
+                  className="text-[10px] uppercase tracking-widest mt-0.5"
+                  style={{ color: "hsl(35 25% 60%)" }}
+                >
+                  Premium Quality
+                </span>
+              </div>
+
+              {/* Cardinal tags */}
+              <VintageTag position="top"    text="Shipped Fresh" />
+              <VintageTag position="bottom" text="Since 2024"   />
+              <VintageTag position="left"   text="Organic"      />
+              <VintageTag position="right"  text="Guaranteed"   />
             </div>
-          )}
+          </div>
 
         </div>
       </div>
@@ -162,3 +196,30 @@ export default function MainHero({ hero }: { hero: any }) {
   );
 }
 
+function VintageTag({
+  position,
+  text,
+}: {
+  position: "top" | "bottom" | "left" | "right";
+  text: string;
+}) {
+  const posClass = {
+    top:    "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+    bottom: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
+    left:   "left-0 top-1/2 -translate-y-1/2 -translate-x-1/2",
+    right:  "right-0 top-1/2 -translate-y-1/2 translate-x-1/2",
+  }[position];
+
+  return (
+    <div
+      className={`absolute ${posClass} px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest whitespace-nowrap`}
+      style={{
+        background: "hsl(28 28% 18%)",
+        border: "1px solid hsl(35 65% 38% / 0.5)",
+        color: "hsl(38 45% 76%)",
+      }}
+    >
+      {text}
+    </div>
+  );
+}
