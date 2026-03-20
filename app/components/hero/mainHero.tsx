@@ -148,7 +148,7 @@ export default function MainHero({ hero }: { hero: any }) {
               </div>
             </div>
           )}
-
+ 
         </div>
       </div>
 
