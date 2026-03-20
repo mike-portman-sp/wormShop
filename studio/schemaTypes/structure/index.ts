@@ -34,15 +34,6 @@ export const structure: StructureResolver = (S) =>
         .schemaType('page')
         .child(S.documentTypeList('page').title('Pages')),
 
-      S.listItem()
-        .title('Blogs')
-        .schemaType('blogs')
-        .child(
-          S.documentTypeList('blogs')
-            .title('Blogs')
-            .defaultOrdering([{field: 'publishedDate', direction: 'desc'}])
-        ),
-
       S.divider(),
 
       // Shop

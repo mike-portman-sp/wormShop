@@ -9,17 +9,10 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const type = body?.result?._type;
   const slug = body?.result?.slug?.current;
 
-  if (type === "blogs") {
-    revalidatePath("/blog");
-    if (slug) revalidatePath(`/blog/${slug}`);
-  } else {
-    if (slug) revalidatePath(`/${slug}`);
-    revalidatePath("/");
-  }
+  if (slug) revalidatePath(`/${slug}`);
+  revalidatePath("/");
 
   return NextResponse.json({ revalidated: true, slug });
 }
-

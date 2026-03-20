@@ -49,9 +49,5 @@ export const columnQuery = `
       buttonStyle,
       formCTA
     },
-    _type == "blogs" => {
-      title,
-      subTitle
-    }
   }
 `;

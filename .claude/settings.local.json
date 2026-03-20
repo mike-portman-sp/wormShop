@@ -4,7 +4,12 @@
       "Bash(xargs grep:*)",
       "Bash(grep -r \"next-sanity\\\\|from.*sanity\" '/c/Users/Mike/Local Sites/sanity-headless/app' --include=*.ts --include=*.tsx)",
       "Bash(pnpm install:*)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\studio\\\\schemaTypes\\\\documents\\\\blogList.ts\")",
+      "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\components\\\\blog\\\\blogList.tsx\")",
+      "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\page.tsx\")",
+      "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\[slug]\\\\page.tsx\")",
+      "Bash(rmdir \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\[slug]\")"
     ]
   }
 }

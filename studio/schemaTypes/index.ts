@@ -1,6 +1,5 @@
 import page from './documents/page'
 import mainMenu from './documents/mainMenu'
-import blogList from './documents/blogList'
 import contentBuilder from './fields/contentBuilder'
 import row from './types/row'
 import column from './types/column'
@@ -23,6 +22,6 @@ import footer from './documents/footer'
 import product from './documents/product'
 import productList from './types/productList'
 
-export const schemaTypes = [ page, mainMenu, seo, pill, footer, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder,
+export const schemaTypes = [ page, mainMenu, seo, pill, footer, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder,
     heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link,
     product, productList ]
