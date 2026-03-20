@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PortableText } from "next-sanity";
 import Button from "../fields/button";
 
@@ -129,57 +130,24 @@ export default function MainHero({ hero }: { hero: any }) {
             </div>
           </div>
 
-          {/* ── Right: vintage medallion ── */}
-          <div
-            className="hidden lg:flex items-center justify-center animate-fade-up"
-            style={{ animationDelay: "0.2s" }}
-          >
-            <div className="relative w-80 h-80">
-
-              {/* Outermost ring — dashed */}
-              <div
-                className="absolute inset-0 rounded-full border border-dashed border-accent/20"
-              />
-              {/* Ornate double-ring */}
-              <div
-                className="absolute inset-5 rounded-full border-2 border-accent/25"
-              />
-              <div
-                className="absolute inset-7 rounded-full border border-border/80"
-              />
-
-              {/* Centre medallion */}
-              <div
-                className="absolute inset-10 rounded-full flex flex-col items-center justify-center text-center"
-                style={{
-                  background:
-                    "radial-gradient(ellipse, hsl(28 30% 22%) 0%, hsl(28 28% 16%) 100%)",
-                  boxShadow: "0 0 60px hsl(22 65% 42% / 0.20), inset 0 1px 0 hsl(38 38% 87% / 0.08)",
-                  border: "1px solid hsl(28 30% 30%)",
-                }}
-              >
-                <span className="text-6xl leading-none mb-1 select-none">🪱</span>
-                <span
-                  className="text-xs font-bold uppercase tracking-[0.15em] mt-2"
-                  style={{ color: "hsl(38 65% 75%)" }}
-                >
-                  Live Worms
-                </span>
-                <span
-                  className="text-[10px] uppercase tracking-widest mt-0.5"
-                  style={{ color: "hsl(35 25% 60%)" }}
-                >
-                  Premium Quality
-                </span>
+          {/* ── Right: hero image ── */}
+          {hero.heroImage?.url && (
+            <div
+              className="hidden lg:flex items-center justify-center animate-fade-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden border border-border/60 shadow-xl">
+                <Image
+                  src={hero.heroImage.url}
+                  alt={hero.heroImage.alt ?? "Hero image"}
+                  fill
+                  className="object-cover"
+                  sizes="512px"
+                  priority
+                />
               </div>
-
-              {/* Cardinal tags */}
-              <VintageTag position="top"    text="Shipped Fresh" />
-              <VintageTag position="bottom" text="Since 2024"   />
-              <VintageTag position="left"   text="Organic"      />
-              <VintageTag position="right"  text="Guaranteed"   />
             </div>
-          </div>
+          )}
 
         </div>
       </div>

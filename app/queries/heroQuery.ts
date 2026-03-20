@@ -16,6 +16,10 @@ export const heroProjection = `
     }
   },
   blobs,
+  heroImage{
+    "url": asset->url,
+    alt,
+  },
   buttons[]{
     _key,
     _type,
