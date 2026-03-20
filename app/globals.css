@@ -22,45 +22,45 @@
 
   --color-gradient-1: linear-gradient(
     to bottom right,
-    hsl(22 65% 42% / 0.10),
-    hsl(35 72% 40% / 0.10)
+    hsl(88 35% 38% / 0.10),
+    hsl(95 28% 45% / 0.10)
   );
   --color-gradient-2: linear-gradient(
     to bottom right,
-    hsl(38 38% 86%),
-    hsl(38 32% 82%)
+    hsl(83 20% 87%),
+    hsl(85 16% 83%)
   );
   --color-gradient-3: linear-gradient(
     to bottom right,
-    hsl(35 72% 40% / 0.14),
-    hsl(38 35% 88% / 0.6)
+    hsl(95 28% 45% / 0.14),
+    hsl(83 20% 89% / 0.6)
   );
   --color-gradient-4: linear-gradient(
     to bottom right,
-    hsl(38 38% 88%),
-    hsl(22 65% 42% / 0.06)
+    hsl(83 22% 89%),
+    hsl(88 35% 38% / 0.06)
   );
 }
 
 @layer base {
   :root {
-    /* ── Warm vintage light palette ── */
-    --background:          38 42% 93%;   /* aged parchment      #f0e6d0 */
-    --foreground:          28 38% 14%;   /* dark warm brown     #2e1c0e */
-    --border:              35 28% 78%;   /* worn sepia border   #cdbfa8 */
-    --ring:                22 65% 42%;   /* terracotta          */
+    /* ── Earthy green palette ── */
+    --background:          82 18% 93%;   /* pale sage linen     */
+    --foreground:          100 25% 12%;  /* deep forest         */
+    --border:              85 15% 72%;   /* sage border         */
+    --ring:                88 35% 38%;   /* moss green          */
 
-    --primary:             22 65% 42%;   /* burnt sienna        #b8521a */
-    --primary-foreground:  38 42% 96%;   /* cream               */
+    --primary:             88 35% 38%;   /* earthy moss green   */
+    --primary-foreground:  90 30% 96%;   /* pale sage cream     */
 
-    --muted:               38 35% 87%;   /* soft parchment      #e8d9c0 */
-    --muted-foreground:    28 22% 42%;   /* faded ink           #736050 */
+    --muted:               83 20% 87%;   /* light sage          */
+    --muted-foreground:    90 12% 42%;   /* muted forest        */
 
-    --accent:              35 72% 40%;   /* antique gold        #b07820 */
-    --accent-foreground:   38 42% 96%;   /* cream               */
+    --accent:              95 28% 45%;   /* sage green          */
+    --accent-foreground:   90 30% 96%;   /* pale sage cream     */
 
-    --card:                38 38% 89%;   /* card surface        #e2d3b8 */
-    --card-foreground:     28 38% 14%;   /* dark brown text     */
+    --card:                83 22% 89%;   /* sage card surface   */
+    --card-foreground:     100 25% 12%;  /* deep forest         */
 
     --radius: 0.5rem;
     --nav-height: 69px;
@@ -70,8 +70,8 @@
       hsl(var(--primary)),
       hsl(var(--accent))
     );
-    --shadow-lifted: 0 10px 30px -5px rgba(80, 40, 10, 0.25);
-    --shadow-warm:   0 0 48px hsl(22 65% 42% / 0.18);
+    --shadow-lifted: 0 10px 30px -5px rgba(20, 45, 15, 0.25);
+    --shadow-warm:   0 0 48px hsl(88 35% 38% / 0.18);
 
     --spacing-md: 1.5rem;
     --spacing-lg: 3rem;
@@ -194,17 +194,7 @@
 
   .pb-lg { padding-bottom: var(--spacing-lg); }
 
-  /* Marquee scroll */
-  @keyframes marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-    will-change: transform;
-  }
-
-  /* Hero fade-up */
+/* Hero fade-up */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }

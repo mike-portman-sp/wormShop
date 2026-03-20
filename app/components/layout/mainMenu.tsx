@@ -30,14 +30,6 @@ type MainMenuProps = {
   };
 };
 
-const PROMO_ITEMS = [
-  "✦  Free shipping on orders over $50",
-  "✦  Live delivery guarantee — or we reship free",
-  "✦  Organically raised, no chemicals ever",
-  "✦  Eco-friendly compostable packaging",
-  "✦  Rated 4.9 / 5 by 1,200+ composters",
-];
-
 export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -64,28 +56,8 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const marqueeItems = [...PROMO_ITEMS, ...PROMO_ITEMS];
-
   return (
     <header ref={navRef} className="sticky top-0 left-0 right-0 z-50">
-
-      {/* ── Promo bar ── warm amber tone */}
-      <div
-        className="overflow-hidden py-2 border-b border-accent/30"
-        style={{ background: "hsl(28 35% 22%)" }}
-      >
-        <div className="flex animate-marquee whitespace-nowrap gap-16">
-          {marqueeItems.map((item, i) => (
-            <span
-              key={i}
-              className="text-xs font-semibold tracking-wide shrink-0"
-              style={{ color: "hsl(38 45% 78%)" }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* ── Main nav ── */}
       <nav

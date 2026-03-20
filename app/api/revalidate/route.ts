@@ -9,10 +9,16 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
+  const type = body?.result?._type;
   const slug = body?.result?.slug?.current;
 
-  if (slug) revalidatePath(`/${slug}`);
-  revalidatePath("/");
+  if (type === "product") {
+    revalidatePath("/shop");
+    if (slug) revalidatePath(`/shop/${slug}`);
+  } else {
+    revalidatePath("/");
+    if (slug) revalidatePath(`/${slug}`);
+  }
 
-  return NextResponse.json({ revalidated: true, slug });
+  return NextResponse.json({ revalidated: true, type, slug });
 }
