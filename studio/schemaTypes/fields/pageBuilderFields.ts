@@ -3,5 +3,5 @@ export const pageBuilderFields = {
   name: 'pageBuilder',
   title: 'Page Builder',
   type: 'array',
-  of: [{ type: 'row' }, {type: 'hero'}],
+  of: [{ type: 'row' }, {type: 'hero'}, {type: 'productList'}],
 }

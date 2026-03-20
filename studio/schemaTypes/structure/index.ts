@@ -43,6 +43,26 @@ export const structure: StructureResolver = (S) =>
             .defaultOrdering([{field: 'publishedDate', direction: 'desc'}])
         ),
 
+      S.divider(),
+
+      // Shop
+      S.listItem()
+        .title('Shop')
+        .child(
+          S.list()
+            .title('Shop')
+            .items([
+              S.listItem()
+                .title('Products')
+                .schemaType('product')
+                .child(
+                  S.documentTypeList('product')
+                    .title('Products')
+                    .defaultOrdering([{field: '_createdAt', direction: 'desc'}])
+                ),
+            ]),
+        ),
+
       //   Divider
       //   S.divider(),
 

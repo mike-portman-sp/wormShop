@@ -1,6 +1,8 @@
 import Row from "./components/layout/row";
 import Hero from "./components/hero/hero";
 import BlogList from "./components/blog/blogList";
+import ProductListBlock from "./components/shop/ProductListBlock";
+
 export default function PageBuilder({ blocks }: { blocks: any[] }) {
   return (
     <>
@@ -15,11 +17,13 @@ export default function PageBuilder({ blocks }: { blocks: any[] }) {
                 columns={block.contentBuilder}
                 columnLayout={block.columns}
                 title={block.title}
-               backgroundColor={block.backgroundColor ? `${block.backgroundColor}` : undefined}  // ← Add bg- prefix
+                backgroundColor={block.backgroundColor ? `${block.backgroundColor}` : undefined}
               />
             );
           case "blogList":
             return <BlogList key={block._key} />;
+          case "productList":
+            return <ProductListBlock key={block._key} block={block} />;
           default:
             return null;
         }

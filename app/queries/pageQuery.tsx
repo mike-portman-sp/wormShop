@@ -76,6 +76,15 @@ export const pageQuery = groq`
             ${columnQuery}
           }
         }
+      },
+      _type == "productList" => {
+        title,
+        showAllProducts,
+        filterCategory,
+        backgroundColor,
+        featuredProducts[]{
+          "_ref": @._ref
+        }
       }
     }
   }

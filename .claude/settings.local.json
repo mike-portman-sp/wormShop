@@ -3,7 +3,8 @@
     "allow": [
       "Bash(xargs grep:*)",
       "Bash(grep -r \"next-sanity\\\\|from.*sanity\" '/c/Users/Mike/Local Sites/sanity-headless/app' --include=*.ts --include=*.tsx)",
-      "Bash(pnpm install:*)"
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)"
     ]
   }
 }

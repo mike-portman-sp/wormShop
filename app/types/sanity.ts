@@ -1,3 +1,49 @@
+export type WeightOption = {
+  label: string;
+  priceModifier: number;
+};
+
+export type ProductImage = {
+  url: string;
+  alt?: string;
+};
+
+export type Product = {
+  _id: string;
+  name: string;
+  slug: string;
+  category?: string;
+  badge?: string;
+  shortDescription?: string;
+  description?: {
+    content?: any[];
+  };
+  features?: string[];
+  careInstructions?: string;
+  price: number;
+  compareAtPrice?: number;
+  inStock: boolean;
+  stockQuantity?: number;
+  weightOptions?: WeightOption[];
+  image?: ProductImage;
+  images?: ProductImage[];
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    noIndex?: boolean;
+  };
+};
+
+export type CartItem = {
+  _id: string;
+  name: string;
+  price: number;
+  image?: string;
+  quantity: number;
+  slug: string;
+  selectedWeight?: string;
+};
+
 export type LinkField = {
   _type?: string;
   linkType: "internal" | "external" | "file";

@@ -9,8 +9,8 @@ import imageField from './fields/imageField'
 import advancedText from './fields/advancedText'
 import button from './fields/button'
 import buttonStyles from './fields/buttonStyles'
-import link from './fields/link' 
-import publishedDate from './fields/publishedDate'  
+import link from './fields/link'
+import publishedDate from './fields/publishedDate'
 import menuItem from './fields/menuItem'
 import hero from './types/hero'
 import card from './objects/card'
@@ -20,6 +20,9 @@ import siteSettings from './documents/siteSettings'
 import innerRow from './types/innerRow'
 import pill from  './fields/pill'
 import footer from './documents/footer'
+import product from './documents/product'
+import productList from './types/productList'
 
-export const schemaTypes = [ page, mainMenu, seo, pill, footer, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder, 
-    heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link ]
+export const schemaTypes = [ page, mainMenu, seo, pill, footer, blogList, innerRow, publishedDate, menuItem, card, row, hero, contentBuilder,
+    heading, column, imageField, advancedText, button, siteSettings, buttonStyles, form, link,
+    product, productList ]
