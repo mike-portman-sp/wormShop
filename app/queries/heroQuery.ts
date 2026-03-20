@@ -16,6 +16,11 @@ export const heroProjection = `
     }
   },
   blobs,
+  heroImage{
+    "url": asset->url,
+    alt,
+    "dimensions": asset->metadata.dimensions,
+  },
   buttons[]{
     _key,
     _type,

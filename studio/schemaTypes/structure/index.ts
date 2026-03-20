@@ -60,6 +60,9 @@ export const structure: StructureResolver = (S) =>
                     .title('Products')
                     .defaultOrdering([{field: '_createdAt', direction: 'desc'}])
                 ),
+              S.listItem()
+                .title('Shop Settings')
+                .child(S.document().schemaType('shopSettings').documentId('shopSettings')),
             ]),
         ),
 
