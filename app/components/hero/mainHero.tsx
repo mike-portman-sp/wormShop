@@ -133,7 +133,7 @@ export default function MainHero({ hero }: { hero: any }) {
           {/* ── Right: hero image ── */}
           {hero.heroImage?.url && (
             <div
-              className="hidden lg:flex items-center justify-center animate-fade-up"
+              className="lg:flex items-center justify-center animate-fade-up"
               style={{ animationDelay: "0.2s" }}
             >
               <div className="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden border border-border/60 shadow-xl">
