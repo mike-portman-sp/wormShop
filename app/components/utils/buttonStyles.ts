@@ -5,16 +5,16 @@ export const getButtonStyles = (style?: string): string => {
   switch (style) {
     case "btn--sun":
       // Primary CTA — warm terracotta → amber, rectangular with slight rounding
-      return `${base} rounded-sm bg-linear-to-r from-primary to-accent text-primary-foreground hover:opacity-90 hover:scale-[1.02] shadow-md hover:shadow-lg h-11 px-7 text-sm tracking-wide`;
+      return `${base} rounded-sm bg-linear-to-r from-primary to-accent text-primary-foreground hover:opacity-90 hover:scale-[1.02] shadow-md hover:shadow-lg h-11 px-7 text-md tracking-wide`;
 
     case "btn--outline-grey":
       // Secondary — warm border, parchment feel
-      return `${base} rounded-sm bg-transparent text-foreground border border-border hover:border-accent/60 hover:text-accent h-11 px-7 text-sm tracking-wide`;
+      return `${base} rounded-sm bg-transparent text-foreground border border-border hover:border-accent/60 hover:text-accent h-11 px-7 text-md tracking-wide`;
 
     case "btn--plain":
-      return "inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent underline-offset-4 hover:underline transition-colors";
+      return "inline-flex items-center gap-1.5 text-md font-semibold text-primary hover:text-accent underline-offset-4 hover:underline transition-colors";
 
     default:
-      return `${base} rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-7 text-sm`;
+      return `${base} rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-7 text-md`;
   }
 };

@@ -31,6 +31,18 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'eyebrow',
+      type: 'object',
+      title: 'Eyebrow Badge',
+      group: 'basic',
+      hidden: ({parent}) => parent?.heroStyle === 'sub-page-hero',
+      options: { collapsed: true, collapsible: true },
+      fields: [
+        defineField({ name: 'badge', title: 'Badge Text', type: 'string', description: 'Text inside the hexagon shape (e.g. "Est. in Your Backyard")' }),
+        defineField({ name: 'sub', title: 'Sub Text', type: 'string', description: 'Text after the badge (e.g. "Since 2024")' }),
+      ],
+    }),
+    defineField({
       name: 'advancedText',
       title: 'Advanced Text',
       type: 'advancedText',
@@ -39,9 +51,10 @@ export default defineType({
     }),
     defineField({
       name: 'subheading',
-      type: 'string',
+      type: 'text',
       title: 'Subheading',
       group: 'basic',
+      rows: 3,
     }),
     defineField({
       name: 'buttons',

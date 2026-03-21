@@ -30,7 +30,7 @@ export default function Column({ column }: ColumnProps) {
 
   return (
     <div
-      className={`p-4 md:p-8 max-w-6xl mx-auto column flex flex-col ${column.colGap} ${shadowCard} ${customClass} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
+      className={`p-4 max-w-6xl mx-auto column flex flex-col ${column.colGap} ${shadowCard} ${customClass} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
       {column.columnContent.map((block) => {
         switch (block._type) {

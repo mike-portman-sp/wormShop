@@ -61,7 +61,7 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
 
       {/* ── Main nav ── */}
       <nav
-        className="border-b border-border transition-shadow duration-300"
+        className="border-b border-border text-center transition-shadow duration-300"
         style={{
           background: "hsl(38 42% 92% / 0.97)",
           backdropFilter: "blur(12px)",
@@ -71,7 +71,7 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
         }}
       >
         <div className="mx-auto px-6 py-3 max-w-7xl">
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex justify-between gap-8">
 
             {/* Logo — vintage wordmark */}
             <a href="/" className="flex flex-col items-start shrink-0 group">
@@ -79,7 +79,6 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
                 className="text-[10px] font-bold uppercase tracking-[0.25em] leading-none mb-0.5 transition-colors"
                 style={{ color: "hsl(35 65% 38% / 0.8)" }}
               >
-                ◆ established 2024 ◆
               </span>
               <span
                 className="text-2xl font-bold leading-none tracking-tight text-foreground group-hover:text-accent transition-colors duration-200"
@@ -90,11 +89,11 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
 
             {/* Desktop links */}
             {mainMenu?.menuItems && (
-              <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center">
+              <div className="hidden md:flex items-center gap-0.5 flex-1 justify-end">
                 <MenuLinks
                   items={mainMenu.menuItems}
                   className="flex items-center gap-0.5"
-                  linkClassName="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative after:absolute after:bottom-0 after:left-4 after:right-4 after:h-px after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+                  linkClassName="px-4 py-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative after:absolute after:bottom-0 after:left-4 after:right-4 after:h-px after:bg-accent after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
                 />
               </div>
             )}
@@ -120,12 +119,12 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
 
           {/* Mobile dropdown */}
           {isMobileMenuOpen && (
-            <div className="md:hidden pt-3 pb-4 border-t border-border mt-3">
+            <div className="md:hidden pt-3 pb-4 border-t items-center  border-border mt-3">
               {mainMenu?.menuItems && (
                 <MenuLinks
                   items={mainMenu.menuItems}
                   className="flex flex-col"
-                  linkClassName="px-2 py-3 text-sm font-medium text-muted-foreground hover:text-foreground border-b border-border/50 last:border-0 transition-colors"
+                  linkClassName="px-2 py-3 text-md font-medium text-muted-foreground hover:text-foreground border-b border-border/50 last:border-0 transition-colors"
                   onLinkClick={() => setIsMobileMenuOpen(false)}
                 />
               )}

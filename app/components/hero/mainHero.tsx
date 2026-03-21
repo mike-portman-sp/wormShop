@@ -53,19 +53,27 @@ export default function MainHero({ hero }: { hero: any }) {
               className="inline-flex items-center gap-3 w-fit animate-fade-up"
               style={{ animationDelay: "0.05s" }}
             >
-              <div
-                className="px-4 py-1.5 border border-accent/50 text-accent text-xs font-bold uppercase tracking-[0.2em]"
-                style={{
-                  clipPath:
-                    "polygon(6px 0%, calc(100% - 6px) 0%, 100% 50%, calc(100% - 6px) 100%, 6px 100%, 0% 50%)",
-                  background: "hsl(35 72% 40% / 0.12)",
-                }}
-              >
-                Est. in Your Backyard
-              </div>
-              <span className="text-muted-foreground text-xs tracking-widest uppercase">
-                Since 2024
-              </span>
+              {(hero.eyebrow?.badge || hero.eyebrow?.sub) && (
+                <>
+                  {hero.eyebrow?.badge && (
+                    <div
+                      className="px-4 py-1.5 border border-accent/50 text-accent text-xs font-bold uppercase tracking-[0.2em]"
+                      style={{
+                        clipPath:
+                          "polygon(6px 0%, calc(100% - 6px) 0%, 100% 50%, calc(100% - 6px) 100%, 6px 100%, 0% 50%)",
+                        background: "hsl(35 72% 40% / 0.12)",
+                      }}
+                    >
+                      {hero.eyebrow.badge}
+                    </div>
+                  )}
+                  {hero.eyebrow?.sub && (
+                    <span className="text-muted-foreground text-xs tracking-widest uppercase">
+                      {hero.eyebrow.sub}
+                    </span>
+                  )}
+                </>
+              )}
             </div>
 
             {/* Heading */}
@@ -73,14 +81,7 @@ export default function MainHero({ hero }: { hero: any }) {
               className="animate-fade-up"
               style={{ animationDelay: "0.15s" }}
             >
-              {hero.advancedText?.content ? (
                 <PortableText value={hero.advancedText.content} />
-              ) : (
-                <h1>
-                  Turn Kitchen Scraps Into{" "}
-                  <strong>Garden Gold</strong>
-                </h1>
-              )}
             </div>
 
             {/* Ornate divider */}

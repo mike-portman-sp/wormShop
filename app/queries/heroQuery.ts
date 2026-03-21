@@ -3,6 +3,7 @@ import { linkProjection } from "./linkProjection";
 export const heroProjection = `
   heading,
   subheading,
+  eyebrow,
   heroStyle,
   advancedText{
     content[]{
