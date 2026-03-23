@@ -6,7 +6,7 @@ const productImageProjection = `
 `;
 
 export const allProductsQuery = groq`
-  *[_type == "product" && inStock == true] | order(_createdAt desc) {
+  *[_type == "product" && inStock == true && !(category in ["castings", "kits"])] | order(_createdAt desc) {
     _id,
     name,
     "slug": slug.current,
@@ -24,7 +24,7 @@ export const allProductsQuery = groq`
 `;
 
 export const productsByCategoryQuery = groq`
-  *[_type == "product" && inStock == true && category == $category] | order(_createdAt desc) {
+  *[_type == "product" && inStock == true && category == $category && !(category in ["castings", "kits"])] | order(_createdAt desc) {
     _id,
     name,
     "slug": slug.current,

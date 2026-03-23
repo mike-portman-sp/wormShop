@@ -41,7 +41,7 @@ export default async function ProductListBlock({ block }: ProductListBlockProps)
         {block.title && (
           <h2 className="text-foreground mb-10 text-center">{block.title}</h2>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {products.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}

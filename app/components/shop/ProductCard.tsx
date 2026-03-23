@@ -32,8 +32,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       className="group block bg-card border border-border rounded-2xl overflow-hidden hover-lift transition-all duration-300"
     >
       {/* Image */}
-      <div className="relative aspect-square bg-muted overflow-hidden">
-        {product.image?.url ? (
+      <div className="relative h-96 bg-muted overflow-hidden">
+        {product.image?.url && (
           <Image
             src={product.image.url}
             alt={product.image.alt || product.name}
@@ -41,10 +41,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-6xl">🪱</span>
-          </div>
         )}
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1">
