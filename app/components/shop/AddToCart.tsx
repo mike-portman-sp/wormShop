@@ -71,7 +71,7 @@ export default function AddToCart({ product }: AddToCartProps) {
       {/* Price display */}
       <div className="flex items-center gap-3">
         <span className="text-3xl font-bold text-foreground">
-          ${finalPrice.toFixed(2)}
+          ${(finalPrice * quantity).toFixed(2)}
         </span>
         {/* {product.compareAtPrice && product.compareAtPrice > finalPrice && (
           <span className="text-lg text-muted-foreground line-through">
