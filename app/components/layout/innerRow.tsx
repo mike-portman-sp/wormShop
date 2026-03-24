@@ -26,7 +26,7 @@ export default function InnerRow({ columns, columnLayout, title }: RowProps) {
   return (
     <section
       id={title?.toLowerCase()}
-      className="row inner-row pb-lg w-full mx-auto"
+      className="row inner-row py-md w-full mx-auto"
     >
       <div
         className={`grid ${gridClass} gap-8 container-custom mx-auto`}

@@ -1,4 +1,5 @@
 import {defineType, defineField} from 'sanity'
+import {pageBuilderFields} from '../fields/pageBuilderFields'
 
 export default defineType({
   name: 'product',
@@ -8,6 +9,7 @@ export default defineType({
     {name: 'basic', title: 'Basic Info', default: true},
     {name: 'pricing', title: 'Pricing & Stock'},
     {name: 'media', title: 'Images'},
+    {name: 'pageBuilder', title: 'Page Builder'},
     {name: 'seo', title: 'SEO'},
   ],
   fields: [
@@ -65,7 +67,7 @@ export default defineType({
       name: 'description',
       title: 'Full Description',
       type: 'advancedText',
-      group: 'basic',
+      group: 'pageBuilder',
       description: 'Detailed product description shown on the product detail page.',
     }),
     defineField({
@@ -182,6 +184,9 @@ export default defineType({
         },
       ],
     }),
+
+    // Page Builder
+    defineField({...pageBuilderFields, group: 'pageBuilder'}),
 
     // SEO
     defineField({

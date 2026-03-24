@@ -27,6 +27,7 @@ export type Product = {
   weightOptions?: WeightOption[];
   image?: ProductImage;
   images?: ProductImage[];
+  pageBuilder?: ContentBlock[];
   seo?: {
     metaTitle?: string;
     metaDescription?: string;

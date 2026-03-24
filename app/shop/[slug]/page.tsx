@@ -9,6 +9,7 @@ import MainMenu from "../../components/layout/mainMenu";
 import Footer from "../../components/layout/footer";
 import CartDrawer from "../../components/shop/CartDrawer";
 import AddToCart from "../../components/shop/AddToCart";
+import PageBuilder from "../../pagebuilder";
 import AdvancedText from "../../components/fields/advancedText";
 import type { Product } from "../../types/sanity";
 import type { Metadata } from "next";
@@ -56,7 +57,7 @@ export default async function ProductPage({ params }: Props) {
           Back to Shop
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-md">
           {/* Images */}
           <div className="flex flex-col gap-4">
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
@@ -163,32 +164,13 @@ export default async function ProductPage({ params }: Props) {
 
         {/* Full description */}
         {product.description?.content && product.description.content.length > 0 && (
-          <div className="border-t border-border pt-12 mb-16">
-            <h2 className="text-foreground mb-6">About This Product</h2>
-            <div className="max-w-3xl">
+          <div className="border-t border-border pt-12 py-md">
               <AdvancedText content={product.description.content} />
-            </div>
           </div>
         )}
 
-        {/* Trust section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-border pt-12">
-          {[
-            { icon: "🚚", title: "Fast Shipping", desc: "3–7 business days" },
-            { icon: "✅", title: "Live Guarantee", desc: "Arrive alive or we reship" },
-            { icon: "🌱", title: "Organic", desc: "No chemicals used" },
-            { icon: "📦", title: "Eco Packaging", desc: "100% compostable" },
-          ].map((b) => (
-            <div
-              key={b.title}
-              className="text-center p-4 rounded-2xl bg-muted flex flex-col items-center gap-2"
-            >
-              <span className="text-3xl">{b.icon}</span>
-              <p className="text-foreground font-bold text-sm m-0">{b.title}</p>
-              <p className="text-muted-foreground text-xs m-0">{b.desc}</p>
-            </div>
-          ))}
-        </div>
+        {/* Page builder blocks */}
+        {product.pageBuilder && <PageBuilder blocks={product.pageBuilder} />}
       </main>
 
       <Footer

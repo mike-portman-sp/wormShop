@@ -19,7 +19,8 @@ export default function AddToCart({ product }: AddToCartProps) {
 
   const hasWeightOptions =
     product.weightOptions && product.weightOptions.length > 0;
-  const finalPrice = product.price + (selectedWeight?.priceModifier ?? 0);
+  const finalPrice =
+    product.price + (selectedWeight?.priceModifier ?? 0);
 
   const handleAdd = () => {
     if (!product.inStock) return;
@@ -72,16 +73,16 @@ export default function AddToCart({ product }: AddToCartProps) {
         <span className="text-3xl font-bold text-foreground">
           ${finalPrice.toFixed(2)}
         </span>
-        {product.compareAtPrice && product.compareAtPrice > finalPrice && (
+        {/* {product.compareAtPrice && product.compareAtPrice > finalPrice && (
           <span className="text-lg text-muted-foreground line-through">
             ${product.compareAtPrice.toFixed(2)}
           </span>
-        )}
-        {product.compareAtPrice && product.compareAtPrice > finalPrice && (
+        )} */}
+        {/* {product.compareAtPrice && product.compareAtPrice > finalPrice && (
           <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-500/90 text-white">
             Save ${(product.compareAtPrice - finalPrice).toFixed(2)}
           </span>
-        )}
+        )} */}
       </div>
 
       {/* Quantity + Add to Cart */}

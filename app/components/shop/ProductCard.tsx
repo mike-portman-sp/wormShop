@@ -42,7 +42,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         )}
-        {/* Badges */}
+        {/* Badges
         <div className="absolute top-3 left-3 flex flex-col gap-1">
           {product.badge && (
             <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-primary to-accent text-primary-foreground shadow">
@@ -59,7 +59,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               Out of Stock
             </span>
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* Info */}
@@ -107,7 +107,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* CTA */}
         <div className="mt-2">
           {product.inStock ? (
-            <span className="inline-flex items-center justify-center w-full py-2 px-4 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold transition-all duration-300 group-hover:scale-105">
+            <span className="inline-flex items-center justify-center w-full py-2 px-4 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold transition-all duration-300">
               Shop Now
             </span>
           ) : (

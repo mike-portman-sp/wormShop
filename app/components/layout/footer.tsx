@@ -44,15 +44,6 @@ export default function Footer({ footer, mainMenu, siteName }: FooterProps) {
           {siteName || "Mike Portman"}
         </a>
 
-        {/* Main Menu Links in Footer */}
-        {mainMenu?.menuItems && (
-          <MenuLinks 
-            items={mainMenu.menuItems}
-            className="flex flex-wrap gap-4 justify-center"
-            linkClassName="text-muted-foreground hover:text-primary transition-colors font-medium"
-          />
-        )}
-
         {/* Footer Social Links */}
         {footer.footerItems && footer.footerItems.length > 0 && (
           <nav className="flex gap-4">

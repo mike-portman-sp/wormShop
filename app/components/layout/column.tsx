@@ -25,12 +25,12 @@ export default function Column({ column }: ColumnProps) {
 
   const shadowCard =
     column.columnStyle === "shadow"
-      ? "bg-card border border-border md:p-12 p-4 md:p-8 rounded-3xl shadow-soft gap-8"
+      ? "bg-card border border-border p-4 md:p-8 rounded-3xl shadow-soft gap-8"
       : "";
 
   return (
     <div
-      className={`p-4 max-w-6xl mx-auto column flex flex-col ${column.colGap} ${shadowCard} ${customClass} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
+      className={`p-4 max-w-6xl mx-auto column w-full flex flex-col ${column.colGap} ${shadowCard} ${customClass} ${column.colHorizontalAlign || ""} ${column.colVerticalAlign || ""} ${column.colTextAlign || ""}`}
     >
       {column.columnContent.map((block) => {
         switch (block._type) {

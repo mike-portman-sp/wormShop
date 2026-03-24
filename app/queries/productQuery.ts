@@ -1,4 +1,9 @@
 import { groq } from "next-sanity";
+import { columnQuery } from "./columnQuery";
+import { buttonQuery } from "./buttonQuery";
+import { heroProjection } from "./heroQuery";
+import { innerRowQuery } from "./innerRowQuery";
+import { pillQuery } from "./pillQuery";
 
 const productImageProjection = `
   "url": asset->url,
@@ -63,7 +68,35 @@ export const productDetailQuery = groq`
     "images": images[]{
       ${productImageProjection}
     },
-    seo
+    seo,
+    pageBuilder[]{
+      _key,
+      _type,
+      _type == "hero" => {
+        ${heroProjection}
+      },
+      _type == "row" => {
+        title,
+        columns,
+        backgroundColor,
+        contentBuilder[]{
+          _key,
+          _type,
+          _type == "column" => { ${columnQuery} },
+          _type == "innerRow" => { ${innerRowQuery} },
+          _type == "pill" => { ${pillQuery} },
+          _type == "card" => {
+            heading, text, pills, cardStyle,
+            image{ asset->{ url }, alt },
+            button{ ${buttonQuery} }
+          }
+        }
+      },
+      _type == "productList" => {
+        title, showAllProducts, filterCategory, backgroundColor,
+        featuredProducts[]{ "_ref": @._ref }
+      }
+    }
   }
 `;
 
