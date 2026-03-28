@@ -70,7 +70,7 @@ function advancedText(blocks: any[]) {
 
 const products = [
   {
-    _id: "product-red-wigglers",b
+    _id: "product-red-wigglers",
     _type: "product",
     name: "Red Wigglers — Live Composting Worms",
     slug: { _type: "slug", current: "red-wigglers" },
