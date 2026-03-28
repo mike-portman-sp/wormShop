@@ -37,7 +37,7 @@ export default async function ProductListBlock({ block }: ProductListBlockProps)
     <section
       className={`py-16 ${block.backgroundColor || ""}`}
     >
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto px-6">
         {block.title && (
           <h2 className="text-foreground mb-10 text-center">{block.title}</h2>
         )}

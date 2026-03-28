@@ -70,7 +70,7 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
             : "none",
         }}
       >
-        <div className="mx-auto px-6 py-3 max-w-7xl">
+        <div className="mx-auto px-6 py-3 container">
           <div className="flex justify-between gap-8 items-center">
 
             {/* Logo — vintage wordmark */}

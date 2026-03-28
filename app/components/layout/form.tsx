@@ -39,7 +39,7 @@ export default function Form({ form }: FormProps) {
   return (
 
       <div className="container mx-auto relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="mx-auto text-center">
           {/* Contact Form */}
           <div className="p-8 rounded-3xl bg-background border border-border shadow-soft">
             <p className="font-handwritten text-2xl text-muted-foreground mb-6">

@@ -95,13 +95,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Price */}
         <div className="flex items-center gap-2 mt-1">
           <span className="text-xl font-bold text-foreground">
-            ${product.price.toFixed(2)}
+            {product.weightOptions && product.weightOptions.length > 1 ? "From " : ""}${product.price.toFixed(2)}
           </span>
-          {hasDiscount && (
+          {/* {hasDiscount && (
             <span className="text-sm text-muted-foreground line-through">
               ${product.compareAtPrice!.toFixed(2)}
             </span>
-          )}
+          )} */}
         </div>
 
         {/* CTA */}

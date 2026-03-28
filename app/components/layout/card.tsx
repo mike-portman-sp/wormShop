@@ -5,7 +5,7 @@ export default function Card({ card }: { card: any }) {
 
   return (
     <div className="container mx-auto px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto">
         <div
           className={`group p-8 ${card.cardBG} rounded-3xl  border border-border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
         >

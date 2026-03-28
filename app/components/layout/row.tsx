@@ -16,7 +16,7 @@ export default function Row({ columns, columnLayout, title, backgroundColor }: R
 
   return (
     <section id={title?.toLowerCase()} className={`row py-md mx-auto ${backgroundColor}`}>
-      <div className={`grid ${gridClass} gap-8 container-custom mx-auto  max-w-6xl`}>
+      <div className={`grid ${gridClass} container gap-8 container-custom mx-auto `}>
         {columns?.map((item) => {
           if (item._type === "card") {
             if (item.cardStyle === "card-image-bg") return <CardBG key={item._key} card={item} />;

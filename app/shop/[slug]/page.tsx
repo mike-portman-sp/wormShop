@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
       <MainMenu mainMenu={pageData?.mainMenu} siteName={pageData?.siteName} />
       <CartDrawer />
 
-      <main className="container mx-auto max-w-6xl px-6 py-10">
+      <main className="container mx-auto px-6 py-10">
         {/* Breadcrumb */}
         <Link
           href="/shop"

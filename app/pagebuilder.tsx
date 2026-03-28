@@ -2,7 +2,8 @@ import Row from "./components/layout/row";
 import Hero from "./components/hero/hero";
 import ProductListBlock from "./components/shop/ProductListBlock";
 
-export default function PageBuilder({ blocks }: { blocks: any[] }) {
+export default function PageBuilder({ blocks }: { blocks: any[] | null }) {
+  if (!blocks) return null;
   return (
     <>
       {blocks.map((block) => {

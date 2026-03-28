@@ -39,7 +39,7 @@ export default async function ShopPage() {
 
       <main>
         {/* Hero */}
-        <section className="container mx-auto max-w-6xl px-6 py-16 text-center">
+        <section className="container mx-auto px-6 py-16 text-center">
           <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-4">
             Live · Compostable · Shipped Fresh
           </p>
@@ -54,7 +54,7 @@ export default async function ShopPage() {
         </section>
 
         {/* Products */}
-        <section className="container mx-auto max-w-6xl px-6 pb-20">
+        <section className="container mx-auto px-6 pb-20">
           {!products || products.length === 0 ? (
             <div className="text-center py-20">
               <span className="text-7xl block mb-4">🪱</span>
@@ -74,7 +74,7 @@ export default async function ShopPage() {
                     <h2 className="text-foreground mb-6 pb-3 border-b border-border">
                       {CATEGORY_LABELS[cat] || cat}
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 gap-6">
                       {catProducts.map((product) => (
                         <ProductCard key={product._id} product={product} />
                       ))}
@@ -85,7 +85,7 @@ export default async function ShopPage() {
             </div>
           ) : (
             // Flat grid for single category or mixed
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               {products.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
@@ -95,7 +95,7 @@ export default async function ShopPage() {
 
         {/* Trust badges */}
         <section className="bg-muted border-t border-border py-12">
-          <div className="container mx-auto max-w-6xl px-6">
+          <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
                 { icon: "🚚", title: "Fast Shipping", desc: "3–7 business days" },

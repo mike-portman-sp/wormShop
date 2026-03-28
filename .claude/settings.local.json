@@ -9,7 +9,10 @@
       "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\components\\\\blog\\\\blogList.tsx\")",
       "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\page.tsx\")",
       "Bash(rm \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\[slug]\\\\page.tsx\")",
-      "Bash(rmdir \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\[slug]\")"
+      "Bash(rmdir \"c:\\\\Users\\\\Mike\\\\Local Sites\\\\wormShop\\\\app\\\\blog\\\\[slug]\")",
+      "Read(//c/Users/Mike/AppData/Roaming/Claude/**)",
+      "Read(//c/Users/Mike/.claude/**)",
+      "Bash(curl -s \"https://p0x6p47i.api.sanity.io/v2025-12-20/data/query/production?query=*[_type==''page''&&slug.current==''about''][0]{_id,title,slug}\" -H \"Authorization: Bearer skAe6nMMrSoFTsbIdDmBw6HThmp7HPTMmRwYOFvzfeqmC2xVKrvfh1vpRKfsLTVGk4iagVFossjKvG6SypRZsP5WuoJ1GNIQKTvwCnNB9OtZAi9usXiR1GTiCJz6GOAiYeabau7FrgEOIUitL4uH9Bf4SJBviFJb9nZp72H3hitjY0XwtXFq\")"
     ]
   }
 }

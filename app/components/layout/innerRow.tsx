@@ -29,7 +29,7 @@ export default function InnerRow({ columns, columnLayout, title }: RowProps) {
       className="row inner-row py-md w-full mx-auto"
     >
       <div
-        className={`grid ${gridClass} gap-8 container-custom mx-auto`}
+        className={`grid ${gridClass} container gap-8 container-custom mx-auto`}
       >
         {columns?.map((item, index) => {
           if (isOrphan && index === columns.length - 1) {

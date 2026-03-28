@@ -70,7 +70,6 @@ export default defineType({
       title: 'Column Style',
       type: 'string',
       description: 'Different column styling options',
-      initialValue: 'shadow',
       group: 'settings',
       options: {
         list: [{title: 'Shadow', value: 'shadow'}],
