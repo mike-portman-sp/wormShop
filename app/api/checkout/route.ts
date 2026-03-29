@@ -48,21 +48,17 @@ export async function POST(req: NextRequest) {
           shipping_rate_data: {
             type: "fixed_amount",
             fixed_amount: { amount: 0, currency: "usd" },
-            display_name: "Standard Shipping (3–7 business days)",
-            delivery_estimate: {
-              minimum: { unit: "business_day", value: 3 },
-              maximum: { unit: "business_day", value: 7 },
-            },
+            display_name: "Local Pickup, Pflugerille TX. Double check email address for contact.",
           },
         },
         {
           shipping_rate_data: {
             type: "fixed_amount",
             fixed_amount: { amount: 1500, currency: "usd" },
-            display_name: "Express Shipping (1–2 business days)",
+            display_name: "Standard Shipping (3–7 business days)",
             delivery_estimate: {
-              minimum: { unit: "business_day", value: 1 },
-              maximum: { unit: "business_day", value: 2 },
+              minimum: { unit: "business_day", value: 3 },
+              maximum: { unit: "business_day", value: 7 },
             },
           },
         },

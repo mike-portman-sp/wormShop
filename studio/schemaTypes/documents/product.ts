@@ -37,12 +37,10 @@ export default defineType({
       options: {
         list: [
           {title: 'Red Wigglers (Eisenia fetida)', value: 'red-wigglers'},
-          {title: 'European Nightcrawlers (Eisenia hortensis)', value: 'european-nightcrawlers'},
-          {title: 'African Nightcrawlers (Eudrilus eugeniae)', value: 'african-nightcrawlers'},
-          {title: 'Canadian Nightcrawlers (Lumbricus terrestris)', value: 'canadian-nightcrawlers'},
+       
           {title: 'Worm Castings / Vermicompost', value: 'castings'},
           {title: 'Composting Kits & Bins', value: 'kits'},
-          {title: 'Bedding & Accessories', value: 'accessories'},
+
         ],
         layout: 'radio',
       },

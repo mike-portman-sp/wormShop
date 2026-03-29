@@ -8,9 +8,7 @@ type ProductCardProps = {
 
 const CATEGORY_LABELS: Record<string, string> = {
   "red-wigglers": "Red Wigglers",
-  "european-nightcrawlers": "European Nightcrawlers",
-  "african-nightcrawlers": "African Nightcrawlers",
-  "canadian-nightcrawlers": "Canadian Nightcrawlers",
+
   castings: "Worm Castings",
   kits: "Composting Kits",
   accessories: "Accessories",

@@ -35,9 +35,6 @@ export default defineType({
         list: [
           {title: 'All', value: ''},
           {title: 'Red Wigglers', value: 'red-wigglers'},
-          {title: 'European Nightcrawlers', value: 'european-nightcrawlers'},
-          {title: 'African Nightcrawlers', value: 'african-nightcrawlers'},
-          {title: 'Canadian Nightcrawlers', value: 'canadian-nightcrawlers'},
           {title: 'Worm Castings', value: 'castings'},
           {title: 'Composting Kits', value: 'kits'},
           {title: 'Accessories', value: 'accessories'},
