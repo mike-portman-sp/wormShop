@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto_Condensed } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "./components/utils/smoothScroll";
@@ -8,12 +8,11 @@ import { CartProvider } from "./context/CartContext";
 import { getSiteSettings } from "./queries/getSiteSettings";
 import { generateMetadata as genMeta } from "./queries/generateMetaData";
 
-const robotoCondensed = Roboto_Condensed({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-mono",
+const vagRound = localFont({
+  src: "../public/fonts/OPTIVagRound-Bold.otf",
+  variable: "--font-vag",
   display: "swap",
-  fallback: ["Arial Narrow", "Arial", "sans-serif"],
+  fallback: ["Nunito", "Arial Rounded MT Bold", "sans-serif"],
 });
 
 export async function generateMetaData() {
@@ -37,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={robotoCondensed.variable}>
+    <html lang="en" className={vagRound.variable}>
       <body className="antialiased">
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-RG0PH08QTM" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">{`

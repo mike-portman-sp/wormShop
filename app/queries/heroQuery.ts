@@ -21,6 +21,10 @@ export const heroProjection = `
     "url": asset->url,
     alt,
   },
+  iconImage{
+    "url": asset->url,
+    alt,
+  },
   buttons[]{
     _key,
     _type,

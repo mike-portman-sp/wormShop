@@ -4,7 +4,8 @@
    Theme tokens
 ---------------------------------------- */
 @theme {
-  --font-handwritten: var(--font-mono), monospace;
+  --font-sans: var(--font-vag), "Arial Rounded MT Bold", sans-serif;
+  --font-handwritten: var(--font-vag), "Arial Rounded MT Bold", sans-serif;
 
   --color-background:        hsl(var(--background));
   --color-foreground:        hsl(var(--foreground));
@@ -207,6 +208,39 @@
   .animate-fade-up {
     opacity: 0;
     animation: fadeUp 0.65s ease forwards;
+  }
+
+  /* Worm hero float animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%       { transform: translateY(-18px) rotate(var(--float-rotate, 12deg)); }
+  }
+  .animate-float {
+    animation: float var(--float-duration, 3s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+
+  /* Worm hero scale-in (spring-ish bounce) */
+  @keyframes scaleIn {
+    0%   { transform: scale(0); }
+    60%  { transform: scale(1.15); }
+    80%  { transform: scale(0.92); }
+    100% { transform: scale(1); }
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  /* Worm hero underline reveal */
+  @keyframes underlineReveal {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  .animate-underline {
+    transform-origin: left;
+    animation: underlineReveal 0.5s ease forwards;
+    animation-delay: 0.8s;
+    transform: scaleX(0);
   }
 
   /* Vintage ornate divider */

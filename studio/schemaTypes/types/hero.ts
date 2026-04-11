@@ -26,6 +26,7 @@ export default defineType({
       options: {
         list: [
           {title: 'Front Page Hero', value: 'main-hero'},
+          {title: 'Worm Hero (Animated)', value: 'worm-hero'},
           {title: 'Sub Page Hero', value: 'sub-page-hero'},
         ],
       },
@@ -73,6 +74,18 @@ export default defineType({
         defineField({ name: 'alt', title: 'Alt text', type: 'string' }),
       ],
       hidden: ({parent}) => parent?.heroStyle === 'sub-page-hero',
+    }),
+    defineField({
+      name: 'iconImage',
+      title: 'Icon Image',
+      description: 'Small image displayed above the heading (replaces the emoji icon)',
+      type: 'image',
+      group: 'settings',
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: 'alt', title: 'Alt text', type: 'string' }),
+      ],
+      hidden: ({parent}) => parent?.heroStyle !== 'worm-hero',
     }),
     defineField({
       name: 'blobs',
