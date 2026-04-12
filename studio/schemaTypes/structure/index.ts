@@ -25,6 +25,7 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title('Site Settings')
         .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+
       // Divider
       S.divider(),
 

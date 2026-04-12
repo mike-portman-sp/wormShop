@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "./components/utils/smoothScroll";
 import { CartProvider } from "./context/CartContext";
+import CartDrawer from "./components/shop/CartDrawer";
 
 import { getSiteSettings } from "./queries/getSiteSettings";
 import { generateMetadata as genMeta } from "./queries/generateMetaData";
@@ -48,6 +49,7 @@ export default function RootLayout({
         <SmoothScroll />
         <CartProvider>
           {children}
+          <CartDrawer />
         </CartProvider>
       </body>
     </html>

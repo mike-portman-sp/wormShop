@@ -77,6 +77,11 @@ export const pageQuery = groq`
           }
         }
       },
+      _type == "form" => {
+        formTitle,
+        formCTA,
+        buttonStyle,
+      },
       _type == "productList" => {
         title,
         showAllProducts,

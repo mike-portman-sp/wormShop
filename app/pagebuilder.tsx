@@ -1,6 +1,7 @@
 import Row from "./components/layout/row";
 import Hero from "./components/hero/hero";
 import ProductListBlock from "./components/shop/ProductListBlock";
+import Form from "./components/layout/form";
 
 export default function PageBuilder({ blocks }: { blocks: any[] | null }) {
   if (!blocks) return null;
@@ -22,6 +23,8 @@ export default function PageBuilder({ blocks }: { blocks: any[] | null }) {
             );
           case "productList":
             return <ProductListBlock key={block._key} block={block} />;
+          case "form":
+            return <Form key={block._key} form={block} />;
           default:
             return null;
         }

@@ -64,8 +64,8 @@ export default function WormHero({ hero }: { hero: any }) {
               <Image
                 src={hero.iconImage.url}
                 alt={hero.iconImage.alt ?? ""}
-                width={160}
-                height={160}
+                width={256}
+                height={256}
                 className="object-contain"
               />
             </div>
