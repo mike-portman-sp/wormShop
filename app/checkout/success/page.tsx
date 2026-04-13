@@ -38,8 +38,8 @@ export default async function CheckoutSuccessPage() {
             <ul className="flex flex-col gap-3">
               {[
                 "📧 You'll receive a confirmation email shortly",
-                "📦 We'll carefully pack your live worms in eco-friendly packaging",
-                "🚚 Your order ships within 1–2 business days",
+                "📦 We'll carefully pack your live worms in eco-friendly packaging or email you about scheduling a local pickup",
+                "🚚 Your order ships within 2-3 business days",
                 "✅ Covered by our Live Delivery Guarantee",
               ].map((step) => (
                 <li key={step} className="text-muted-foreground text-sm flex items-start gap-2">
