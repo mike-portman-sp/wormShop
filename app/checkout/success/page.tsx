@@ -38,7 +38,7 @@ export default async function CheckoutSuccessPage() {
             <ul className="flex flex-col gap-3">
               {[
                 "📧 You'll receive a confirmation email shortly",
-                "📦 We'll carefully pack your live worms in eco-friendly packaging or email you about scheduling a local pickup",
+                "📦 We'll carefully pack your live worms in eco-friendly packaging or email if selected local pickup",
                 "🚚 Your order ships within 2-3 business days",
                 "✅ Covered by our Live Delivery Guarantee",
               ].map((step) => (

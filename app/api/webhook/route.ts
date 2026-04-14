@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -23,14 +24,34 @@ export async function POST(req: NextRequest) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session;
-      // Order is confirmed — you can:
-      // - Send a confirmation email via Resend
-      // - Update inventory in Sanity via the Sanity client with a write token
-      // - Create an order record in your database
-      console.log("Order completed:", session.id, {
-        customer_email: session.customer_details?.email,
-        amount_total: session.amount_total,
+      const resend = new Resend(process.env.RESEND_API_KEY!);
+      const customerEmail = session.customer_details?.email;
+      const amountTotal = session.amount_total
+        ? `$${(session.amount_total / 100).toFixed(2)}`
+        : "N/A";
+      const shippingName = session.customer_details?.name ?? "";
+      const shippingAddress = session.customer_details?.address;
+      const addressLine = shippingAddress
+        ? `${shippingAddress.line1}, ${shippingAddress.city}, ${shippingAddress.state} ${shippingAddress.postal_code}`
+        : "N/A";
+
+      await resend.emails.send({
+        from: "mikeportmanj@gmail.com",
+        to: process.env.CONTACT_EMAIL!,
+        subject: `New Order — ${amountTotal} from ${shippingName}`,
+        text: [
+          `New order received!`,
+          ``,
+          `Order ID: ${session.id}`,
+          `Customer: ${shippingName} (${customerEmail})`,
+          `Ship to: ${addressLine}`,
+          `Total: ${amountTotal}`,
+          ``,
+          `View in Stripe: https://dashboard.stripe.com/payments/${session.payment_intent}`,
+        ].join("\n"),
       });
+
+      console.log("Order completed:", session.id);
       break;
     }
 
