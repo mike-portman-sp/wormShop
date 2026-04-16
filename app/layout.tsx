@@ -39,12 +39,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={vagRound.variable}>
       <body className="antialiased">
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-RG0PH08QTM" strategy="afterInteractive" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-GJTNMW67JS" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-RG0PH08QTM');
+          gtag('config', 'G-GJTNMW67JS');
         `}</Script>
         <SmoothScroll />
         <CartProvider>
