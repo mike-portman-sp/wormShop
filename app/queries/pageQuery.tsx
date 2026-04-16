@@ -17,7 +17,10 @@ export const pageQuery = groq`
       noIndex,
       hideNavigation,
       metaImage{
+        hotspot,
+        crop,
         asset->{
+          _id,
           url
         }
       }

@@ -20,9 +20,13 @@ export default defineType({
       rows: 4,
     }),
     defineField({
-      name: 'metaImage', // Changed from 'image'
-      title: 'Meta Image',
+      name: 'metaImage',
+      title: 'Social Share Image',
       type: 'image',
+      description: 'Recommended: 1200×630px. Used for Facebook, LinkedIn, Twitter/X, Discord, Slack, and all other social platforms. Enable hotspot to control how the image is cropped.',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'noIndex',

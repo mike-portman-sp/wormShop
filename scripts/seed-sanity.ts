@@ -142,13 +142,18 @@ const shopPage = {
 async function main() {
   console.log("🪱 Seeding Sanity content for GotWormz...\n");
 
-  // 1. Create / replace products
+  // 1. Create products (only if they don't exist — never overwrite to preserve Studio-uploaded images)
   console.log("📦 Creating products...");
   for (const product of products) {
     const { compareAtPrice, ...rest } = product as any;
     const doc = compareAtPrice ? product : { ...rest };
-    await client.createOrReplace(doc as any);
-    console.log(`  ✅  ${product.name}`);
+    const existing = await client.fetch(`*[_id == $id][0]._id`, { id: product._id });
+    if (!existing) {
+      await client.createIfNotExists(doc as any);
+      console.log(`  ✅  ${product.name}`);
+    } else {
+      console.log(`  ℹ️   ${product.name} already exists — skipping`);
+    }
   }
 
   // 2. Create shop page (only if it doesn't exist)

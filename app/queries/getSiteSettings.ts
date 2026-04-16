@@ -9,7 +9,10 @@ export const siteSettingsQuery = groq`
       metaTitle,
       metaDescription,
       metaImage{
+        hotspot,
+        crop,
         asset->{
+          _id,
           url
         }
       }
