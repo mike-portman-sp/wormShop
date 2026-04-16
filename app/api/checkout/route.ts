@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
         },
       ],
       metadata: {
-        source: "wormShop",
+        source: "GotWormz",
       },
     });
 

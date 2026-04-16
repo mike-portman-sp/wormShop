@@ -7,7 +7,7 @@ import Footer from "../../components/layout/footer";
 import ClearCartOnSuccess from "./ClearCartOnSuccess";
 
 export const metadata = {
-  title: "Order Confirmed | wormShop",
+  title: "Order Confirmed | GotWormz",
   description: "Your worm order has been placed successfully.",
   robots: { index: false },
 };

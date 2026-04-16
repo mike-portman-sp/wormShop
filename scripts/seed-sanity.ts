@@ -114,7 +114,7 @@ const products = [
       { _key: "w4", label: "5 lb — Bulk / Garden (~5,000 worms)", priceModifier: 60 },
     ],
     seo: {
-      metaTitle: "Buy Red Wigglers Live Composting Worms | wormShop",
+      metaTitle: "Buy Red Wigglers Live Composting Worms | GotWormz",
       metaDescription:
         "Order live Red Wigglers (Eisenia fetida) for home composting. Live delivery guaranteed. Fast shipping across the US and Canada.",
     },
@@ -130,7 +130,7 @@ const shopPage = {
   slug: { _type: "slug", current: "shop" },
   publishedDate: new Date().toISOString(),
   seo: {
-    metaTitle: "Shop Compostable Worms | wormShop",
+    metaTitle: "Shop Compostable Worms | GotWormz",
     metaDescription:
       "Buy live composting worms, worm castings, and starter kits. Red Wigglers, Nightcrawlers, and more — shipped fresh with a live delivery guarantee.",
   },
@@ -140,7 +140,7 @@ const shopPage = {
 // ─── Main ───────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log("🪱 Seeding Sanity content for wormShop...\n");
+  console.log("🪱 Seeding Sanity content for GotWormz...\n");
 
   // 1. Create / replace products
   console.log("📦 Creating products...");
@@ -203,10 +203,10 @@ async function main() {
     await client.createOrReplace({
       _id: "siteSettings",
       _type: "siteSettings",
-      siteName: "wormShop",
+      siteName: "GotWormz",
       siteUrl: "http://localhost:3000",
       defaultSeo: {
-        metaTitle: "wormShop — Premium Compostable Worms",
+        metaTitle: "GotWormz — Premium Compostable Worms",
         metaDescription:
           "Buy live composting worms, worm castings, and starter kits. Shipped fresh with a live delivery guarantee across the US and Canada.",
       },

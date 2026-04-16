@@ -83,7 +83,7 @@ export default function MainMenu({ mainMenu, siteName }: MainMenuProps) {
               <span
                 className="text-2xl font-bold leading-none tracking-tight text-foreground group-hover:text-accent transition-colors duration-200"
               >
-                {siteName || "wormShop"}
+                {siteName || "GotWormz"}
               </span>
             </a>
 

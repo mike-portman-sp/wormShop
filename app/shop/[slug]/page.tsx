@@ -5,6 +5,7 @@ import { CheckCircle, ChevronLeft, Leaf } from "lucide-react";
 import { client } from "../../../studio/client";
 import { productDetailQuery } from "../../queries/productQuery";
 import { pageQuery } from "../../queries/pageQuery";
+import { getSiteSettings } from "../../queries/getSiteSettings";
 import MainMenu from "../../components/layout/mainMenu";
 import Footer from "../../components/layout/footer";
 import CartDrawer from "../../components/shop/CartDrawer";
@@ -18,14 +19,14 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = await client.fetch<Product>(productDetailQuery, { slug });
+  const [product, settings] = await Promise.all([
+    client.fetch<Product>(productDetailQuery, { slug }),
+    getSiteSettings(),
+  ]);
   if (!product) return { title: "Product Not Found" };
   return {
-    title: product.seo?.metaTitle || `${product.name} | wormShop`,
-    description:
-      product.seo?.metaDescription ||
-      product.shortDescription ||
-      `Buy ${product.name} from wormShop. Premium live composting worms.`,
+    title: product.seo?.metaTitle || `${product.name} | ${settings?.siteName}`,
+    description: product.seo?.metaDescription || product.shortDescription,
     robots: product.seo?.noIndex ? { index: false } : undefined,
   };
 }

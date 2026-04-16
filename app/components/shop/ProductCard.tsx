@@ -1,20 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getSiteSettings } from "@/app/queries/getSiteSettings";
 import type { Product } from "@/app/types/sanity";
 
 type ProductCardProps = {
   product: Product;
 };
 
-const CATEGORY_LABELS: Record<string, string> = {
-  "red-wigglers": "Red Wigglers",
-
-  castings: "Worm Castings",
-  kits: "Composting Kits",
-  accessories: "Accessories",
-};
-
-export default function ProductCard({ product }: ProductCardProps) {
+export default async function ProductCard({ product }: ProductCardProps) {
+  const settings = await getSiteSettings();
   const hasDiscount =
     product.compareAtPrice && product.compareAtPrice > product.price;
   const discountPct = hasDiscount
@@ -64,7 +58,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-4 flex flex-col gap-2">
         {product.category && (
           <p className="text-xs text-primary font-medium uppercase tracking-wide">
-            {CATEGORY_LABELS[product.category] || product.category}
+            {settings?.shopCategories?.find((c: {value: string}) => c.value === product.category)?.label ?? product.category}
           </p>
         )}
         <h3 className="text-foreground font-bold text-lg leading-tight group-hover:text-primary transition-colors">

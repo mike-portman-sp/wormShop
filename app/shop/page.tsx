@@ -1,29 +1,28 @@
 import { client } from "../../studio/client";
 import { allProductsQuery } from "../queries/productQuery";
 import { pageQuery } from "../queries/pageQuery";
+import { getSiteSettings } from "../queries/getSiteSettings";
 import MainMenu from "../components/layout/mainMenu";
 import Footer from "../components/layout/footer";
 import ProductCard from "../components/shop/ProductCard";
 import CartDrawer from "../components/shop/CartDrawer";
 import type { Product } from "../types/sanity";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Shop Compostable Worms | wormShop",
-  description:
-    "Premium live composting worms shipped to your door. Red Wigglers, Nightcrawlers, Worm Castings and more.",
-};
-
-const CATEGORY_LABELS: Record<string, string> = {
-  "red-wigglers": "Red Wigglers",
-  castings: "Worm Castings",
-  kits: "Composting Kits",
-  accessories: "Accessories",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await client.fetch(pageQuery, { slug: "shop" }).catch(() => null);
+  return {
+    title: pageData?.seo?.metaTitle,
+    description: pageData?.seo?.metaDescription,
+    robots: pageData?.seo?.noIndex ? { index: false, follow: false } : undefined,
+  };
+}
 
 export default async function ShopPage() {
-  const [products, pageData] = await Promise.all([
+  const [products, pageData, settings] = await Promise.all([
     client.fetch<Product[]>(allProductsQuery),
     client.fetch(pageQuery, { slug: "shop" }).catch(() => null),
+    getSiteSettings(),
   ]);
 
   // Group products by category for display
@@ -38,15 +37,16 @@ export default async function ShopPage() {
         {/* Hero */}
         <section className="container mx-auto px-6 py-16 text-center">
           <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-4">
-            Live · Compostable · Shipped Fresh
+            Austin &amp; Central Texas · Live · Shipped Fresh
           </p>
           <h1 className="text-foreground mb-4">
             Premium <strong>Composting Worms</strong>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-xl">
-            All worms are raised organically, packed carefully, and shipped
-            with a live delivery guarantee. Transform your food waste into
-            rich compost today.
+            Central Texas&apos;s source for live composting worms. All worms are raised
+            organically, packed carefully, and shipped with a live delivery guarantee
+            to Austin, Round Rock, Cedar Park, Georgetown, Waco, San Antonio, and
+            everywhere in between.
           </p>
         </section>
 
@@ -69,7 +69,7 @@ export default async function ShopPage() {
                 return (
                   <div key={cat}>
                     <h2 className="text-foreground mb-6 pb-3 border-b border-border">
-                      {CATEGORY_LABELS[cat] || cat}
+                      {settings?.shopCategories?.find((c: {value: string}) => c.value === cat)?.label ?? cat}
                     </h2>
                     <div className="grid grid-cols-1 gap-6">
                       {catProducts.map((product) => (

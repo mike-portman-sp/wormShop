@@ -6,7 +6,7 @@ import MainMenu from "../../components/layout/mainMenu";
 import Footer from "../../components/layout/footer";
 
 export const metadata = {
-  title: "Checkout Cancelled | wormShop",
+  title: "Checkout Cancelled | GotWormz",
   robots: { index: false },
 };
 

@@ -13,7 +13,11 @@ export const siteSettingsQuery = groq`
           url
         }
       }
-    }
+    },
+    localBusinessDescription,
+    serviceAreas,
+    knowsAbout,
+    shopCategories[]{value, label}
   }
 `;
 
