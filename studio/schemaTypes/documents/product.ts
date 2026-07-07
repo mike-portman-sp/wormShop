@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+import {defineType, defineField, defineArrayMember} from 'sanity'
 import {pageBuilderFields} from '../fields/pageBuilderFields'
 
 export default defineType({
@@ -122,7 +122,7 @@ export default defineType({
       group: 'pricing',
       description: 'Different sizes available (e.g. 0.5 lb starter, 1 lb, 2 lb). Each option can add to the base price.',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           name: 'weightOption',
           fields: [
@@ -142,14 +142,14 @@ export default defineType({
           ],
           preview: {
             select: {title: 'label', subtitle: 'priceModifier'},
-            prepare({title, subtitle}: {title: string; subtitle: number}) {
+            prepare({title, subtitle}) {
               return {
                 title,
                 subtitle: subtitle > 0 ? `+$${subtitle}` : subtitle < 0 ? `-$${Math.abs(subtitle)}` : 'Base price',
               }
             },
           },
-        },
+        }),
       ],
     }),
     defineField({
