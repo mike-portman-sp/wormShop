@@ -25,5 +25,11 @@ export const siteSettingsQuery = groq`
 `;
 
 export async function getSiteSettings() {
-  return client.fetch(siteSettingsQuery);
+  const settings = await client.fetch(siteSettingsQuery);
+
+  if (settings?.siteUrl) {
+    settings.siteUrl = settings.siteUrl.replace(/^http:\/\//, "https://").replace(/\/$/, "");
+  }
+
+  return settings;
 }

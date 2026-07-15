@@ -11,12 +11,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const pages = await client.fetch(pagesQuery);
 
-  const pageEntries: MetadataRoute.Sitemap = pages.map((page: { slug: string; _updatedAt: string }) => ({
-    url: `${siteUrl}/${page.slug}`,
-    lastModified: new Date(page._updatedAt),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const pageEntries: MetadataRoute.Sitemap = pages
+    .filter((page: { slug: string; _updatedAt: string }) => page.slug !== "/")
+    .map((page: { slug: string; _updatedAt: string }) => ({
+      url: `${siteUrl}/${page.slug}`,
+      lastModified: new Date(page._updatedAt),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }));
 
   return [
     {
