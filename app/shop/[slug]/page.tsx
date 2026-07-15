@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     client.fetch<Product>(productDetailQuery, { slug }),
     getSiteSettings(),
   ]);
-  if (!product) return { title: "Product Not Found" };
+  if (!product) return { title: "Product not found" };
   return {
     title: product.seo?.metaTitle || `${product.name} | ${settings?.siteName}`,
     description: product.seo?.metaDescription || product.shortDescription,
@@ -55,7 +55,7 @@ export default async function ProductPage({ params }: Props) {
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
         >
           <ChevronLeft size={16} />
-          Back to Shop
+          Back to shop
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-md">
@@ -128,7 +128,7 @@ export default async function ProductPage({ params }: Props) {
             {product.features && product.features.length > 0 && (
               <div className="bg-muted rounded-2xl p-5">
                 <h3 className="text-foreground text-base font-bold mb-3">
-                  Why You&apos;ll Love These Worms
+                  Why you&apos;ll love these worms
                 </h3>
                 <ul className="flex flex-col gap-2">
                   {product.features.map((feature, i) => (
@@ -152,7 +152,7 @@ export default async function ProductPage({ params }: Props) {
                 <Leaf size={20} className="text-primary flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-foreground text-sm font-bold mb-1">
-                    Care Instructions
+                    Care instructions
                   </h4>
                   <p className="text-muted-foreground text-sm m-0">
                     {product.careInstructions}

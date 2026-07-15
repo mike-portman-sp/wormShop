@@ -3,10 +3,10 @@ import { PortableText } from "next-sanity";
 import Button from "../fields/button";
 
 const TRUST_BADGES = [
-  { icon: "✦", label: "Free Shipping $50+" },
-  { icon: "✦", label: "Live Guarantee" },
-  { icon: "✦", label: "Organically Raised" },
-  { icon: "✦", label: "Eco Packaging" },
+  { icon: "✦", label: "Free shipping $50+" },
+  { icon: "✦", label: "Live guarantee" },
+  { icon: "✦", label: "Organically raised" },
+  { icon: "✦", label: "Eco packaging" },
 ];
 
 export default function MainHero({ hero }: { hero: any }) {

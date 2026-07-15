@@ -43,7 +43,7 @@ export default function AddToCart({ product }: AddToCartProps) {
       {hasWeightOptions && (
         <div>
           <p className="text-sm font-semibold text-foreground mb-2">
-            Select Weight:
+            Select weight:
           </p>
           <div className="flex flex-wrap gap-2">
             {product.weightOptions!.map((opt) => (
@@ -122,10 +122,10 @@ export default function AddToCart({ product }: AddToCartProps) {
         >
           <ShoppingCart size={20} />
           {!product.inStock
-            ? "Out of Stock"
+            ? "Out of stock"
             : added
-            ? "Added to Cart!"
-            : "Add to Cart"}
+            ? "Added to cart!"
+            : "Add to cart"}
         </button>
       </div>
     </div>

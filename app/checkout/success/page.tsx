@@ -7,7 +7,7 @@ import Footer from "../../components/layout/footer";
 import ClearCartOnSuccess from "./ClearCartOnSuccess";
 
 export const metadata = {
-  title: "Order Confirmed | GotWormz",
+  title: "Order confirmed | GotWormz",
   description: "Your worm order has been placed successfully.",
   robots: { index: false },
 };
@@ -27,7 +27,7 @@ export default async function CheckoutSuccessPage() {
           </div>
 
           <div>
-            <h1 className="text-foreground mb-2">Order Confirmed!</h1>
+            <h1 className="text-foreground mb-2">Order confirmed!</h1>
             <p className="text-muted-foreground text-xl">
               Thank you for your purchase. Your worms are getting ready to ship!
             </p>
@@ -54,13 +54,13 @@ export default async function CheckoutSuccessPage() {
               href="/shop"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-gradient-to-r from-primary to-accent text-primary-foreground hover:scale-105 shadow-lg hover:shadow-xl h-12 px-5 text-base"
             >
-              Continue Shopping
+              Continue shopping
             </Link>
             <Link
               href="/"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-card text-foreground border border-border hover:border-primary hover:scale-105 shadow-sm h-12 px-5 text-base"
             >
-              Go Home
+              Go home
             </Link>
           </div>
         </div>

@@ -6,7 +6,7 @@ import MainMenu from "../../components/layout/mainMenu";
 import Footer from "../../components/layout/footer";
 
 export const metadata = {
-  title: "Checkout Cancelled | GotWormz",
+  title: "Checkout cancelled | GotWormz",
   robots: { index: false },
 };
 
@@ -24,7 +24,7 @@ export default async function CheckoutCancelPage() {
           </div>
 
           <div>
-            <h1 className="text-foreground mb-2">Checkout Cancelled</h1>
+            <h1 className="text-foreground mb-2">Checkout cancelled</h1>
             <p className="text-muted-foreground text-xl">
               No worries — your cart is still saved. Ready to continue whenever you are.
             </p>
@@ -35,13 +35,13 @@ export default async function CheckoutCancelPage() {
               href="/shop"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-gradient-to-r from-primary to-accent text-primary-foreground hover:scale-105 shadow-lg hover:shadow-xl h-12 px-5 text-base"
             >
-              Return to Shop
+              Return to shop
             </Link>
             <Link
               href="/"
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-card text-foreground border border-border hover:border-primary hover:scale-105 shadow-sm h-12 px-5 text-base"
             >
-              Go Home
+              Go home
             </Link>
           </div>
         </div>

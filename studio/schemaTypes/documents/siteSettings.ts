@@ -74,6 +74,29 @@ export default defineType({
       options: {layout: 'tags'},
     }),
     defineField({
+      name: 'phone',
+      title: 'Phone Number',
+      type: 'string',
+      group: 'localSeo',
+      description: 'Optional. Only add this if you want it published — used in structured data for click-to-call.',
+    }),
+    defineField({
+      name: 'priceRange',
+      title: 'Price Range',
+      type: 'string',
+      group: 'localSeo',
+      description: 'e.g. "$" or "$$" — shown in Google local search structured data.',
+    }),
+    defineField({
+      name: 'sameAs',
+      title: 'Same As (Profile Links)',
+      type: 'array',
+      group: 'localSeo',
+      description:
+        'Links to your Google Business Profile and social profiles (Facebook, Instagram, Yelp, etc). Confirms to Google this is the same business — important for local ranking.',
+      of: [{type: 'url'}],
+    }),
+    defineField({
       name: 'shopCategories',
       title: 'Shop Category Labels',
       type: 'array',

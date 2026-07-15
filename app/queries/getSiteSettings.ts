@@ -20,6 +20,9 @@ export const siteSettingsQuery = groq`
     localBusinessDescription,
     serviceAreas,
     knowsAbout,
+    phone,
+    priceRange,
+    sameAs,
     shopCategories[]{value, label}
   }
 `;

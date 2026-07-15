@@ -69,7 +69,7 @@ export default function CartDrawer() {
           <div className="flex items-center gap-2">
             <ShoppingBag size={20} className="text-primary" />
             <h2 className="text-lg font-bold text-foreground">
-              Your Cart {items.length > 0 && `(${items.reduce((s, i) => s + i.quantity, 0)})`}
+              Your cart {items.length > 0 && `(${items.reduce((s, i) => s + i.quantity, 0)})`}
             </h2>
           </div>
           <button
@@ -91,7 +91,7 @@ export default function CartDrawer() {
                 onClick={closeCart}
                 className="text-primary hover:underline text-sm"
               >
-                Continue Shopping
+                Continue shopping
               </button>
             </div>
           ) : (
@@ -136,7 +136,7 @@ export default function CartDrawer() {
               disabled={isCheckingOut}
               className="w-full py-3 px-6 rounded-full font-semibold text-base bg-gradient-to-r from-primary to-accent text-primary-foreground hover:scale-105 transition-all duration-300 shadow-lg disabled:opacity-70 disabled:cursor-wait disabled:scale-100"
             >
-              {isCheckingOut ? "Redirecting to Checkout…" : "Checkout with Stripe"}
+              {isCheckingOut ? "Redirecting to checkout…" : "Checkout with Stripe"}
             </button>
 
             {/* Clear cart */}

@@ -100,11 +100,11 @@ export default async function ProductCard({ product }: ProductCardProps) {
         <div className="mt-2">
           {product.inStock ? (
             <span className="inline-flex items-center justify-center w-full py-2 px-4 rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-semibold transition-all duration-300">
-              Shop Now
+              Shop now
             </span>
           ) : (
             <span className="inline-flex items-center justify-center w-full py-2 px-4 rounded-full bg-muted text-muted-foreground text-sm font-semibold cursor-not-allowed">
-              Out of Stock
+              Out of stock
             </span>
           )}
         </div>
