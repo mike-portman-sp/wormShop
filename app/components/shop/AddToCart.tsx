@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ShoppingCart, Minus, Plus } from "lucide-react";
+import posthog from "posthog-js";
 import { useCart } from "@/app/context/CartContext";
 import type { Product, WeightOption } from "@/app/types/sanity";
 
@@ -32,6 +33,15 @@ export default function AddToCart({ product }: AddToCartProps) {
       quantity,
       slug: product.slug,
       selectedWeight: selectedWeight?.label,
+    });
+    posthog.capture("product_added_to_cart", {
+      product_id: product._id,
+      product_name: product.name,
+      product_slug: product.slug,
+      product_category: product.category,
+      quantity,
+      price: finalPrice,
+      selected_weight: selectedWeight?.label ?? null,
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);

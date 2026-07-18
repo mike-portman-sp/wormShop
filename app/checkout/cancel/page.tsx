@@ -4,6 +4,7 @@ import { client } from "../../../studio/client";
 import { pageQuery } from "../../queries/pageQuery";
 import MainMenu from "../../components/layout/mainMenu";
 import Footer from "../../components/layout/footer";
+import TrackCancelled from "./TrackCancelled";
 
 export const metadata = {
   title: "Checkout cancelled | GotWormz",
@@ -16,6 +17,7 @@ export default async function CheckoutCancelPage() {
   return (
     <>
       <MainMenu mainMenu={pageData?.mainMenu} siteName={pageData?.siteName} />
+      <TrackCancelled />
 
       <main className="container mx-auto max-w-2xl px-6 py-24 text-center">
         <div className="flex flex-col items-center gap-6">

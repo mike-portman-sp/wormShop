@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { Resend } from "resend";
+import { getPostHogClient } from "@/app/lib/posthog-server";
 
 export async function POST(req: NextRequest) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -16,9 +17,10 @@ export async function POST(req: NextRequest) {
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET);
-  } catch (err: any) {
-    console.error("Webhook signature verification failed:", err.message);
-    return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    console.error("Webhook signature verification failed:", message);
+    return NextResponse.json({ error: `Webhook Error: ${message}` }, { status: 400 });
   }
 
   switch (event.type) {
@@ -29,6 +31,9 @@ export async function POST(req: NextRequest) {
       const amountTotal = session.amount_total
         ? `$${(session.amount_total / 100).toFixed(2)}`
         : "N/A";
+      const amountTotalNumber = session.amount_total
+        ? session.amount_total / 100
+        : 0;
       const shippingName = session.customer_details?.name ?? "";
       const shippingAddress = session.customer_details?.address;
       const addressLine = shippingAddress
@@ -50,6 +55,20 @@ export async function POST(req: NextRequest) {
           `View in Stripe: https://dashboard.stripe.com/payments/${session.payment_intent}`,
         ].join("\n"),
       });
+
+      const posthog = getPostHogClient();
+      posthog.capture({
+        distinctId: session.id,
+        event: "order_completed",
+        properties: {
+          order_id: session.id,
+          amount_total: amountTotalNumber,
+          currency: session.currency ?? "usd",
+          payment_intent: session.payment_intent,
+          shipping_country: shippingAddress?.country ?? null,
+        },
+      });
+      await posthog.flush();
 
       console.log("Order completed:", session.id);
       break;

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import type { CartItem } from "@/app/types/sanity";
+import { getPostHogClient } from "@/app/lib/posthog-server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -68,12 +69,24 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    const posthog = getPostHogClient();
+    posthog.capture({
+      distinctId: session.id,
+      event: "checkout_session_created",
+      properties: {
+        session_id: session.id,
+        item_count: items.reduce((s, i) => s + i.quantity, 0),
+        cart_total: items.reduce((s, i) => s + i.price * i.quantity, 0),
+        product_ids: items.map((i) => i._id),
+        product_names: items.map((i) => i.name),
+      },
+    });
+    await posthog.flush();
+
     return NextResponse.json({ url: session.url });
-  } catch (err: any) {
+  } catch (err) {
     console.error("Stripe checkout error:", err);
-    return NextResponse.json(
-      { error: err.message || "Failed to create checkout session" },
-      { status: 500 }
-    );
+    const message = err instanceof Error ? err.message : "Failed to create checkout session";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

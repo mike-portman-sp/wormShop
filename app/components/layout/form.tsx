@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 import { getButtonStyles } from "../utils/buttonStyles";
 
 type FormProps = {
@@ -29,9 +30,11 @@ export default function Form({ form }: FormProps) {
         body: JSON.stringify(formData),
       });
       if (!res.ok) throw new Error();
+      posthog.capture("contact_form_submitted");
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-    } catch {
+    } catch (err) {
+      posthog.captureException(err);
       setStatus("error");
     }
   };
