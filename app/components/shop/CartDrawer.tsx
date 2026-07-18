@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import Image from "next/image";
+import posthog from "posthog-js";
 import { useCart } from "@/app/context/CartContext";
 import type { CartItem } from "@/app/types/sanity";
 
@@ -32,6 +33,12 @@ export default function CartDrawer() {
     if (items.length === 0) return;
     setIsCheckingOut(true);
     setError(null);
+    posthog.capture("checkout_initiated", {
+      item_count: items.reduce((s, i) => s + i.quantity, 0),
+      cart_total: total,
+      product_ids: items.map((i) => i._id),
+      product_names: items.map((i) => i.name),
+    });
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -41,8 +48,10 @@ export default function CartDrawer() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Checkout failed");
       window.location.href = data.url;
-    } catch (err: any) {
-      setError(err.message || "Something went wrong. Please try again.");
+    } catch (err) {
+      posthog.captureException(err);
+      const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      setError(message);
       setIsCheckingOut(false);
     }
   };
@@ -141,7 +150,13 @@ export default function CartDrawer() {
 
             {/* Clear cart */}
             <button
-              onClick={clearCart}
+              onClick={() => {
+                posthog.capture("cart_cleared", {
+                  item_count: items.reduce((s, i) => s + i.quantity, 0),
+                  cart_total: total,
+                });
+                clearCart();
+              }}
               className="flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-red-400 transition-colors mx-auto"
             >
               <Trash2 size={12} />
