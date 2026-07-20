@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
       apiVersion: "2026-02-25.clover",
     });
-    const { items }: { items: CartItem[] } = await req.json();
+    const { items, distinctId }: { items: CartItem[]; distinctId?: string } = await req.json();
 
     if (!items || items.length === 0) {
       return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
@@ -66,12 +66,13 @@ export async function POST(req: NextRequest) {
       ],
       metadata: {
         source: "GotWormz",
+        ...(distinctId ? { posthog_distinct_id: distinctId } : {}),
       },
     });
 
     const posthog = getPostHogClient();
     posthog.capture({
-      distinctId: session.id,
+      distinctId: distinctId || session.id,
       event: "checkout_session_created",
       properties: {
         session_id: session.id,

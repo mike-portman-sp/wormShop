@@ -12,6 +12,7 @@ import CartDrawer from "../../components/shop/CartDrawer";
 import AddToCart from "../../components/shop/AddToCart";
 import PageBuilder from "../../pagebuilder";
 import AdvancedText from "../../components/fields/advancedText";
+import TrackProductViewed from "./TrackProductViewed";
 import type { Product } from "../../types/sanity";
 import type { Metadata } from "next";
 
@@ -47,6 +48,7 @@ export default async function ProductPage({ params }: Props) {
     <>
       <MainMenu mainMenu={pageData?.mainMenu} siteName={pageData?.siteName} />
       <CartDrawer />
+      <TrackProductViewed productId={product._id} name={product.name} category={product.category} />
 
       <main className="container mx-auto px-6 py-10">
         {/* Breadcrumb */}

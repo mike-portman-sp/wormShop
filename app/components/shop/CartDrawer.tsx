@@ -43,7 +43,7 @@ export default function CartDrawer() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, distinctId: posthog.get_distinct_id() }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Checkout failed");
@@ -109,7 +109,15 @@ export default function CartDrawer() {
                 <CartLineItem
                   key={`${item._id}-${item.selectedWeight ?? "base"}`}
                   item={item}
-                  onRemove={() => removeItem(item._id, item.selectedWeight)}
+                  onRemove={() => {
+                    posthog.capture("cart_item_removed", {
+                      product_id: item._id,
+                      product_name: item.name,
+                      quantity: item.quantity,
+                      selected_weight: item.selectedWeight ?? null,
+                    });
+                    removeItem(item._id, item.selectedWeight);
+                  }}
                   onQuantityChange={(q) =>
                     updateQuantity(item._id, q, item.selectedWeight)
                   }

@@ -56,9 +56,15 @@ export async function POST(req: NextRequest) {
         ].join("\n"),
       });
 
+      const shippingMethod = session.shipping_cost
+        ? session.shipping_cost.amount_total === 0
+          ? "Local pickup"
+          : "Standard shipping"
+        : null;
+
       const posthog = getPostHogClient();
       posthog.capture({
-        distinctId: session.id,
+        distinctId: session.metadata?.posthog_distinct_id || session.id,
         event: "order_completed",
         properties: {
           order_id: session.id,
@@ -66,6 +72,7 @@ export async function POST(req: NextRequest) {
           currency: session.currency ?? "usd",
           payment_intent: session.payment_intent,
           shipping_country: shippingAddress?.country ?? null,
+          shipping_method: shippingMethod,
         },
       });
       await posthog.flush();
