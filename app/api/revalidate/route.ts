@@ -20,5 +20,10 @@ export async function POST(req: NextRequest) {
     if (slug) revalidatePath(`/${slug}`);
   }
 
+  if (type === "siteSettings") {
+    revalidatePath("/sitemap.xml");
+    revalidatePath("/robots.txt");
+  }
+
   return NextResponse.json({ revalidated: true, type, slug });
 }
